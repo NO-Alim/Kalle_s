@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Roboto&family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+$color-bg: #fff;
+$color-bg-sec: rgb(240, 240, 240);
+$color-font: #000;
+$color-font-sec: rgb(109, 109, 109);
+$color-hover: rgb(93, 217, 255);
+
+
+
+
+$padding-margin-ex-lg: 150px;
+$padding-margin-lg: 100px;
+$padding-margin-md: 70px;
+$padding-margin-sm: 50px;
+$padding-margin-ex-sm: 20px;
+
+$transition: all 0.3s ease-in-out;
+//query
+$large: 1100px;
+$ex-medium: 900px;
+$medium: 768px;
+$small: 550px;
+$extraSmall: 450px;
+
+$heading: 70px;
+$heading-sm: 50px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 20px;
+$font-base: 16px;
+$font-base-lg: 18px;
+$logo-font: 'Lalezar', cursive;
+
+
+nav{
+    .nav-container{
+        display: flex;
+        flex-direction: column;
+
+        .top-nav{
+            background-color: $color-bg-sec;
+            padding: 5px 10px;
+
+            .top-nav-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @media (max-width: $medium) {
+                    flex-direction: column;
+                }
+                span{
+                    font-size: 14px;
+                    color: $color-font-sec;
+                    font-family: Arial, Helvetica, sans-serif;
+                    @media (max-width: $small) {
+                        font-size: 12px;
+                    }
+                    .spacial{
+                        color: red;
+                    }
+                }
+
+                .left{
+                    span:first-child{
+                        margin-right: 10px;
+                    }
+                }
+
+                .right{
+                    span:last-child{
+                        margin-left: 10px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+
+        .bottom-nav{
+            background-color: $color-bg;
+            padding: $padding-margin-ex-sm 5px;
+            .bottom-nav-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .menu-container{
+                    display: none;
+                    @media (max-width: $medium) {
+                        display: block;
+                        flex: 1;
+                    }
+                }
+                .logo-container{
+                    flex: 1;
+                    text-align: left;
+                    .logo{
+                        @media (max-width: $medium) {
+                            text-align: center;
+                        }
+
+                        a{
+                            font-size: $h1;
+                            font-family: $logo-font;
+                        }
+                    }
+                }
+
+                .links-container{
+                    flex: 2;
+                    text-align: center;
+                    @media (max-width: $medium) {
+                        display: none;
+                    }
+                    ul{
+                        width: 70%;
+                        margin: 0 auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        @media (max-width: $ex-medium) {
+                            width: 100%;
+                        }
+                        li{
+                            a{
+                                display: block;
+                                font-size: $font-base;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-weight: 500;
+                                transition: $transition;
+                                color: $color-font;
+                                &:hover{
+                                    color: $color-hover;
+                                }
+                                &.active{
+                                    color: $color-hover;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .nav-btn-container{
+                    flex: 1;
+                    text-align: right;
+                    ul{
+                        max-width: 200px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-left: auto;
+                        margin-right: 5px;
+                        @media (max-width: $small) {
+                            justify-content: flex-end;
+                        }
+                        li{
+                            @media (max-width: $small) {
+                                margin-left: 20px;
+                            }
+                            button{
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background-color: transparent;
+                                border: none;
+                                font-size: $h4;
+                                cursor: pointer;
+                                position: relative;
+                                &:focus{
+                                    outline: none;
+                                }
+
+                                span{
+                                    position: absolute;
+                                    padding: 0 2px;
+                                    background-color: $color-font;
+                                    color: $color-bg;
+                                    font-size: 12px;
+                                    border-radius: 10px;
+                                    top: -10px;
+                                    right: -5px;
+                                }
+                            }
+                            &.user,&.like{
+                                @media (max-width: $small) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
