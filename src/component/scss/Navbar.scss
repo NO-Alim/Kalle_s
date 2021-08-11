@@ -7,9 +7,6 @@ $color-font: #000;
 $color-font-sec: rgb(109, 109, 109);
 $color-hover: rgb(93, 217, 255);
 
-
-
-
 $padding-margin-ex-lg: 150px;
 $padding-margin-lg: 100px;
 $padding-margin-md: 70px;
@@ -181,6 +178,10 @@ nav{
                                     border-radius: 10px;
                                     top: -10px;
                                     right: -5px;
+                                    max-height: 20px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
                                 }
                             }
                             &.user,&.like{
@@ -192,6 +193,35 @@ nav{
                     }
                 }
             }
+        }
+    }
+}
+
+.full-drawer{
+    min-width: 100vw;
+    width: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+.drawer-container{
+    min-width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-left: auto;
+
+    .close-btn{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transform: scale(1);
+        &:hover{
+            background-color: $color-bg-sec;
+            color: $color-font;
+            transform: scale(1.1);
         }
     }
 }
