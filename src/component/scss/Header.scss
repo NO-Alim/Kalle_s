@@ -43,11 +43,23 @@ $font-base-lg: 18px;
 
 .slick-content{
     position: relative;
+    overflow: hidden;
     .img-container{
         position: absolute;
-        background-color: yellow;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        @media (max-width: $medium) {
+            left: 100px;
+        }
         img{
-
+            margin-right: $padding-margin-lg;
+            display: block;
+            height: 100%;
+            @media (max-width: $medium) {
+                margin-right: 0;
+            }
         }
     }
     .content{
@@ -57,8 +69,19 @@ $font-base-lg: 18px;
         justify-content: center;
         height: 500px;
         margin-left: $padding-margin-lg;
+        @media (max-width: $medium) {
+            margin: 0 $padding-margin-sm;
+            height: 450px;
+        }
+        @media (max-width: $small) {
+            margin-left: $padding-margin-ex-sm;
+            height: 400px;
+        }
         h1{
             font-size: $heading-sm;
+            @media (max-width: $small) {
+                font-size: $h1;
+            }
         }
         button{
             margin-top: $padding-margin-ex-sm;
