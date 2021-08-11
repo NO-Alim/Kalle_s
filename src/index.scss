@@ -383,7 +383,19 @@ body {
 
   //section padding margin
   .section-container{
-    //padding: 
+    padding: $padding-margin-md $padding-margin-lg;
+    @media (max-width: $medium) {
+      padding: $padding-margin-sm $padding-margin-md;
+    }
+    @media (max-width: $small) {
+      padding: $padding-margin-ex-sm $padding-margin-ex-sm;
+    }
+  }
+
+  .img{
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
 

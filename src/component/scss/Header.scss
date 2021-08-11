@@ -70,7 +70,7 @@ $font-base-lg: 18px;
         height: 500px;
         margin-left: $padding-margin-lg;
         @media (max-width: $medium) {
-            margin: 0 $padding-margin-sm;
+            margin: 0 $padding-margin-md;
             height: 450px;
         }
         @media (max-width: $small) {
