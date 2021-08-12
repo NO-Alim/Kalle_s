@@ -5,10 +5,15 @@ import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade'
 import img1 from '../img/model1.png'
 import img2 from '../img/model2.png'
+import img3 from '../img/model3.png'
 import './scss/Header.scss'
-import zIndex from '@material-ui/core/styles/zIndex';
+import { useSpring, animated } from 'react-spring'
+
+const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
+const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
 
 const Header = () => {
+    const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
 
     const settings = {
         dots: true,
@@ -22,13 +27,13 @@ const Header = () => {
     return (
         <div>
             <Slider {...settings}>
-                <div className="slick-div bg-sec">
-                    <div className="slick-content">
-                        <div className="img-container">
+                <div className="slick-div bg-sec" >
+                    <div className="slick-content" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
+                        <animated.div className="img-container" style={{ transform: props.xy.interpolate(trans1) }}>
                             <Fade right>
                             <img src={img1} alt="" />
                             </Fade>
-                        </div>
+                        </animated.div>
                         <Fade left>
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>
@@ -39,12 +44,12 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="slick-div bg-sec">
-                    <div className="slick-content">
-                        <div className="img-container">
+                    <div className="slick-content" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
+                        <animated.div className="img-container" style={{ transform: props.xy.interpolate(trans1) }}>
                             <Fade right>
                             <img src={img2} alt="" />
                             </Fade>
-                        </div>
+                        </animated.div>
                         <Fade left>
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>
@@ -55,12 +60,12 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="slick-div bg-sec">
-                    <div className="slick-content">
-                        <div className="img-container">
+                    <div className="slick-content" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
+                        <animated.div className="img-container" style={{ transform: props.xy.interpolate(trans1) }}>
                             <Fade right>
-                            <img src={img1} alt="" />
+                            <img src={img3} alt="" />
                             </Fade>
-                        </div>
+                        </animated.div>
                         <Fade left>
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>

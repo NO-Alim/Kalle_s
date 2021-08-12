@@ -413,6 +413,7 @@ body {
     justify-content: center;
     border: 1px solid $color-font;
     transition: $transition;
+    cursor: pointer;
     &:focus{
       outline: none;
     }
@@ -434,6 +435,7 @@ body {
     justify-content: center;
     border: 1px solid $color-font;
     transition: $transition;
+    cursor: pointer;
     &:focus{
       outline: none;
     }
