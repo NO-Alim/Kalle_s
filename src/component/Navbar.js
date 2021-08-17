@@ -5,6 +5,7 @@ import {FiMail} from 'react-icons/fi'
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import {FiChevronsRight} from 'react-icons/fi'
+import {RiArrowDropDownLine} from 'react-icons/ri'
 import './scss/Navbar.scss'
 
 const useStyle = makeStyles({
@@ -109,15 +110,19 @@ const Navbar = () => {
                     <div className="top-nav">
                         <div className="top-nav-container">
                             <div className="left">
-                                <span><FaPhone /> +0123456789</span>
-                                <span><FiMail /> noreplay@domain.com</span>
+                                <span><FaPhone />&nbsp; +0123456789</span>
+                                <span><FiMail />&nbsp; noreplay@domain.com</span>
                             </div>
                             <div className="middle">
                                 <span>Summer sale discount off <span className="spacial">50</span>%! Shop Now</span>
                             </div>
                             <div className="right">
-                                <span>english</span>
-                                <span>usa</span>
+                                <div className="drop-container">
+                                    <span className="drop-btn drop-btn-one">english<i><RiArrowDropDownLine /></i></span>
+                                </div>
+                                <div className="drop-container">
+                                    <span className="drop-btn drop-btn-two">USA<i><RiArrowDropDownLine /></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>

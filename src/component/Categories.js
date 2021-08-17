@@ -1,29 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './scss/Categories.scss'
 
 const Categories = () => {
+
     return (
         <div className="section-container">
             <div className="categories">
-                <div className="left">
-                    <div className="img-container">
-                        <button className="btn-white">Women</button>
+                <div className="grid-sec">
+                    <div className="left-container grid-item single-grid">
                     </div>
+                    <button className="btn-white">Women</button>
                 </div>
-                <div className="right">
-                    <div className="right-left">
-                        <div className="img-container top">
+                <div className="right-container grid-item">
+                    <div className="grid-one">
+                        <div className="grid-sec">
+                            <div className="top grid-item single-grid">
+                            </div>
                             <button className="btn-white">Acessories</button>
                         </div>
-                        <div className="img-container bottom">
+                        <div className="grid-sec">
+                            <div className="bottom grid-item single-grid">
+                            </div>
                             <button className="btn-white">Footwear</button>
                         </div>
+                        
                     </div>
-                    <div className="right-right">
-                        <div className="img-container">
-                            <button className="btn-white">Watches</button>
+                    <div className="grid-sec">
+                        <div className="grid-two grid-item single-grid">
                         </div>
+                        <button className="btn-white">Watches</button>
                     </div>
+                    
                 </div>
             </div>
         </div>

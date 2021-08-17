@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap');
+
+
 $color-font: #000;
 $color-bg: #fff;
 
@@ -29,6 +33,9 @@ $padding-margin-md: 70px;
 $padding-margin-sm: 50px;
 $padding-margin-ex-sm: 20px;
 
+$link-font: 'Poppins', sans-serif;
+$sub-title-font: 'Libre Baskerville', serif;
+
 
 *{
   margin: 0;
@@ -44,10 +51,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
 
   a{
     text-decoration: none;
     color: $color-font;
+    font-family: 'Poppins', sans-serif;
   }
 
   li{
@@ -88,6 +97,63 @@ body {
     letter-spacing: 2px;
     @media (max-width: $small) {
       font-size: 18px;
+    }
+  }
+
+  .title{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    font-size: $h3;
+    position: relative;
+    display: inline-block;
+    @media (max-width: $medium) {
+      font-size: $h4;
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: $color-font;
+      left: -80%;
+      top: 50%;
+      transform: translateY(-50%);
+      @media (max-width: $medium) {
+        width: 40px;
+        height: 2px;
+        left: -50%;
+      }
+    }
+
+    &::after{
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: $color-font;
+      right: -80%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @media (max-width: $medium) {
+        width: 40px;
+        height: 2px;
+        right: -50%;
+      }
+    }
+  }
+
+  .sub-title{
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: $color-font-sec;
+    font-weight: lighter;
+    @media (max-width: $medium) {
+      font-size: 12px;
+      margin-bottom: 20px;
     }
   }
 

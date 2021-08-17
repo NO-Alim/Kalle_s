@@ -28,93 +28,129 @@ $font-base: 16px;
 $font-base-lg: 18px;
 
 .categories{
-    display: flex;
-    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    min-height: 600px;
+    @media (max-width: 1000px) {
+        min-height: 470px;
+    }
     @media (max-width: $ex-medium) {
-        flex-direction: column;
-        min-height: 800px;
+        min-height: 450px;
     }
+
+    @media (max-width: 800px) {
+        min-height: 400px;
+    }
+
+    @media (max-width: $medium) {
+        grid-template-columns: 1fr;
+        min-height: 1000px;
+    }
+
     @media (max-width: $extraSmall) {
-        flex-direction: column;
-        min-height: auto;
+        display: block;
     }
-    .img-container{
+
+    .grid-item{
         position: relative;
+        @media (max-width: $extraSmall) {
+            min-height: 400px;
+            margin-bottom: 30px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .grid-sec{
         width: 100%;
         height: 100%;
+        display: block;
+        position: relative;
+        overflow: hidden;
+
+        @media (max-width: $extraSmall) {
+            min-height: 400px;
+            margin-bottom: 30px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
         button{
-            width: 140px;
-            height: 40px;
             position: absolute;
+            width: 110px;
+            height: 40px;
             left: 50%;
             bottom: 20px;
             transform: translateX(-50%);
-            font-weight: bold;
         }
-    }
+        .grid-item{
+            background-image: url("https://cdn.shopify.com/s/files/1/0332/6420/5963/files/young-beautiful-woman-looking-trendy-girl-casual-summer-clothes-positive-funny-model-winking_720x.jpg?v=1606209527");
+            background-size: cover;
+            background-position: center;
+            //
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(1);
+            transition: $transition;
 
-    .left{
-        flex: 2;
-        margin-right: 20px;
-        background-image: url("https://cdn.pixabay.com/photo/2018/01/02/09/47/woman-3055841_960_720.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        @media (max-width: $ex-medium) {
-            margin-bottom: 20px;
-            margin-right: 0;
-            flex: 5;
-        }
-        @media (max-width: $extraSmall) {
-            min-height: 300px;
+            &:hover{
+                transform: scale(1.1);
+            }
         }
     }
-    .right{
-        flex: 3;
-        display: flex;
-        margin-left: 20px;
-        @media (max-width: $ex-medium) {
-            margin-top: 20px;
-            margin-left: 0;
-        }
+    
+
+    .right-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+
         @media (max-width: $extraSmall) {
-            flex-direction: column;
+            grid-template-columns: 1fr;
         }
-        .right-left{
-            flex: 1;
-            margin-right: 20px;
-            display: flex;
-            flex-direction: column;
+        
+        .grid-one{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 30px;
+            @media (max-width: $extraSmall) {
+                grid-template-columns: 1fr;
+            }
 
             .top{
-                margin-bottom: 20px;
-                flex: 1;
-                background-image: url("https://cdn.pixabay.com/photo/2017/04/22/11/17/handbags-2251086_960_720.jpg");
-                background-repeat: no-repeat;
+                background-image: url("https://cdn.shopify.com/s/files/1/0332/6420/5963/files/bag2_360x.jpg?v=1581730050");
                 background-size: cover;
-                @media (max-width: $extraSmall) {
-                    min-height: 300px;
-                }
+                background-position: center;
             }
             .bottom{
-                margin-top: 20px;
-                flex: 1;
-                background-image: url("https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg");
-                background-repeat: no-repeat;
+                background-image: url("https://cdn.shopify.com/s/files/1/0332/6420/5963/files/lemai3020112688_m4_2-0_360x.jpg?v=1606229788");
                 background-size: cover;
-                @media (max-width: $extraSmall) {
-                    min-height: 300px;
-                }
+                background-position: center;
             }
         }
-        .right-right{
-            flex: 1;
-            margin-left: 20px;
-            background-image: url("https://cdn.pixabay.com/photo/2016/02/04/08/54/pocket-watch-1178772_960_720.jpg");
-            background-repeat: no-repeat;
+
+        .grid-two{
+            background-image: url("https://cdn.shopify.com/s/files/1/0332/6420/5963/files/p24-21_360x.jpg?v=1581731327");
             background-size: cover;
-            @media (max-width: $extraSmall) {
-                display: none;
-            }
+            background-position: center;
         }
     }
+}
+
+
+.css-1uccc91-singleValue{
+    color: red;
+    background-color: red;
+}
+
+.css-yk16xz-control {
+    border: none;
 }
