@@ -7,7 +7,6 @@ import './scss/Trending.scss'
 
 const Trending = () => {
     const {products,loading} = useGlobalContext();
-        console.log(products);
     const SampleNextArrow = (props) =>{
         const {className, style , onClick} = props;
         return (

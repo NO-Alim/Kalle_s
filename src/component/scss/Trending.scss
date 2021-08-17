@@ -69,7 +69,9 @@ $font-base-lg: 18px;
                         background: rgba($color-font-sec, $alpha: 0.3);
 
                         .btn-container{
-                            margin-top: 30px;
+                            opacity: 1;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
                         }
                     }
 
@@ -117,6 +119,11 @@ $font-base-lg: 18px;
                     .btn-container{
                         display: block;
                         text-align: center;
+                        position: absolute;
+                        top: 30%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        opacity: 0;
                         transition: $transition;
 
                         .view-btns, .shop-btns{
@@ -177,7 +184,6 @@ $font-base-lg: 18px;
 
             .item-content{
                 text-align: left;
-
                 .name{
                     font-size: 16px;
                     font-weight: 500;
@@ -350,6 +356,12 @@ $font-base-lg: 18px;
         background-color: $color-font;
         top: 50%;
         transform: translateY(-50%) scale(1);
+        border-color: $color-hover;
+        background-color: $color-hover;
+
+        &::before{
+            background-color: $color-hover;
+        }
     }
     &::before{
         position: absolute;
@@ -360,6 +372,7 @@ $font-base-lg: 18px;
         background-color: $color-font;
         border-radius: 50%;
         font-size: 30px;
+        transition: $transition;
     }
     // &::after{
     //     content: ' \203A';
