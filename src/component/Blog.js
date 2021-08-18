@@ -87,7 +87,7 @@ const Blog = () => {
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong>The Easiest Way to Break Out on Top</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
@@ -99,7 +99,7 @@ const Blog = () => {
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong>Style for couple in Weeding season</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>

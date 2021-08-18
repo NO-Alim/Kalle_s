@@ -44,11 +44,18 @@ $font-base-lg: 18px;
             .slick-item{
                 .img-container{
                     cursor: pointer;
+                    overflow: hidden;
                     .img{
                         min-height: 250px;
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center;
+                        transform: scale(1);
+                        transition: $transition;
+
+                        &:hover{
+                            transform: scale(1.1);
+                        }
                     }
                 }
                 .blog-content{

@@ -33,6 +33,7 @@ $logo-font: 'Lalezar', cursive;
 
 
 nav{
+    width: calc(100vw - (100vw - 100%));
     .nav-container{
         display: flex;
         flex-direction: column;

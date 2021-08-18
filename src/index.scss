@@ -52,6 +52,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif;
+  width: calc(100vw - (100vw - 100%));
+  overflow-x: hidden;
 
   a{
     text-decoration: none;
@@ -449,6 +451,7 @@ body {
 
   //section padding margin
   .section-container{
+    //background-color: red;
     padding: $padding-margin-md $padding-margin-lg;
     @media (max-width: $medium) {
       padding: $padding-margin-sm $padding-margin-md;

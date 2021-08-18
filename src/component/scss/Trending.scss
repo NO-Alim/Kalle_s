@@ -267,7 +267,7 @@ $font-base-lg: 18px;
             display: none;
         }
     }
-    .img-container::after{
+    .trending-img-container::after{
         content: 'New';
         position: absolute;
         width: 50px;
@@ -294,7 +294,7 @@ $font-base-lg: 18px;
             display: none;
         }
     }
-    .img-container::after{
+    .trending-img-container::after{
         content: '-30%';
         position: absolute;
         width: 50px;

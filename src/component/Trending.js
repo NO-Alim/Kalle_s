@@ -67,6 +67,8 @@ const Trending = () => {
         ]
         
     }
+
+    console.log(products);
     if (loading) {
         return(
             <h1>Loading</h1>
@@ -85,7 +87,7 @@ const Trending = () => {
                                 return(
                                     <div className="slick-item" key={ind}>
                                         <div className="item-container">
-                                            <div className="img-container" style={{backgroundImage: `url('${item.image}')`}}>
+                                            <div className="img-container trending-img-container" style={{backgroundImage: `url('${item.image}')`}}>
                                                 <div className="img-content">
                                                     <div className="wishlist">
                                                         <span className="wish-btn"><FiHeart /></span>
@@ -105,7 +107,7 @@ const Trending = () => {
                                             </div>
                                             <div className="item-content">
                                                 <h5 className="name">{item.category}</h5>
-                                                <span className="price">$234</span>
+                                                <span className="price">${item.price}</span>
                                                 
                                                 <div className="color-container">
                                                     <div className="colors">
