@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
-import {FiPlus,FiMapPin,FiPhone} from 'react-icons/fi'
+import {FaFacebookF,FaTwitter,FaInstagram,FaLinkedinIn,FaPinterestP} from 'react-icons/fa'
+import {FiPlus,FiMinus,FiMapPin,FiPhone} from 'react-icons/fi'
 import {BiEnvelope} from 'react-icons/bi'
+import { useWindowWidth } from '@react-hook/window-size'
 import './scss/Footer.scss'
+import { useEffect } from 'react'
 
 const Footer = () => {
+    const [touchActive, setTouchActive] = useState(true);
+    const [categoriesActive, setCategoriesActive] = useState(false);
+    const [informationActive, setInformationActive] = useState(false);
+    const [linksActive, setLinksActive] = useState(false);
+    const [newsletter, setNewsletter] = useState(false)
+    const width = useWindowWidth();
+    
+    useEffect(() => {
+        if(width > 550){
+            setTouchActive(true);
+            setCategoriesActive(true);
+            setInformationActive(true);
+            setLinksActive(true);
+            setNewsletter(true);
+        }  
+    },[width])
     return (
         <div>
             <footer>
@@ -18,11 +37,11 @@ const Footer = () => {
                                     </div>
                                     <div className="media-small">
                                         <span>Get in touch</span>
-                                        <i><FiPlus /></i>
+                                        <i onClick={() => setTouchActive(!touchActive)}>{touchActive? <FiMinus />:<FiPlus />}</i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container footer-content">
+                            <div className={`bottom-container footer-content ${touchActive ? 'active' : null}`}>
                                 <div className="sub-sec">
                                     <i><FiMapPin /></i>
                                     <span>184 Main Rd E, St Albans VIC 3021, Australia</span>
@@ -35,6 +54,30 @@ const Footer = () => {
                                     <i><FiPhone /></i>
                                     <span>+001 2233 456</span>
                                 </div>
+                                <div className="sub-sec social-container">
+                                    <ul>
+                                        <li>
+                                            <span className="media-name">Follow on facebook</span>
+                                            <Link className="media-link" to="#"><FaFacebookF /></Link>
+                                        </li>
+                                        <li>
+                                            <span className="media-name">Follow on Twitter</span>
+                                            <Link className="media-link" to="#"><FaTwitter /></Link>
+                                        </li>
+                                        <li>
+                                            <span className="media-name">Follow on Instagram</span>
+                                            <Link className="media-link" to="#"><FaInstagram /></Link>
+                                        </li>
+                                        <li>
+                                            <span className="media-name">Follow on Linkedin</span>
+                                            <Link className="media-link" to="#"><FaLinkedinIn /></Link>
+                                        </li>
+                                        <li>
+                                            <span className="media-name">Follow on Pinterest</span>
+                                            <Link className="media-link" to="#"><FaPinterestP /></Link>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div className="grid-item">
@@ -45,11 +88,11 @@ const Footer = () => {
                                     </div>
                                     <div className="media-small">
                                         <span>categories</span>
-                                        <i><FiPlus /></i>
+                                        <i onClick={() => setCategoriesActive(!categoriesActive)}>{categoriesActive? <FiMinus />:<FiPlus />}</i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container footer-content">
+                            <div className={`bottom-container footer-content ${categoriesActive ? 'active' : null}`}>
                                 <ul>
                                     <li><Link to="#">Men</Link></li>
                                     <li><Link to="#">Women</Link></li>
@@ -68,11 +111,11 @@ const Footer = () => {
                                     </div>
                                     <div className="media-small">
                                         <span>Information</span>
-                                        <i><FiPlus /></i>
+                                        <i onClick={() => setInformationActive(!informationActive)}>{informationActive? <FiMinus />:<FiPlus />}</i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container footer-content">
+                            <div className={`bottom-container footer-content ${informationActive ? 'active' : null}`}>
                                 <ul>
                                     <li><Link to="#">About Us</Link></li>
                                     <li><Link to="#">Contact Us</Link></li>
@@ -91,11 +134,11 @@ const Footer = () => {
                                     </div>
                                     <div className="media-small">
                                         <span>Useful Links</span>
-                                        <i><FiPlus /></i>
+                                        <i onClick={() => setLinksActive(!linksActive)}>{linksActive? <FiMinus />:<FiPlus />}</i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container footer-content">
+                            <div className={`bottom-container footer-content ${linksActive ? 'active' : null}`}>
                                 <ul>
                                     <li><Link to="#">Store Location</Link></li>
                                     <li><Link to="#">Latest News</Link></li>
@@ -114,11 +157,11 @@ const Footer = () => {
                                     </div>
                                     <div className="media-small">
                                         <span>Newsletter sign up</span>
-                                        <i><FiPlus /></i>
+                                        <i onClick={() => setNewsletter(!newsletter)}>{newsletter? <FiMinus />:<FiPlus />}</i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottom-container footer-content">
+                            <div className={`bottom-container footer-content ${newsletter ? 'active' : null}`}>
                                 <p>Subscribe to our newLetter and get 10% off your first purchase</p>
                                 <div className="form-container">
                                     <form>
@@ -133,8 +176,16 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bottom-container copyright">
-
+                <div className="footer-bottom">
+                    <div className="copyright">
+                        <p>Copyright &copy; 2021 <span>Kalles</span> all rights reserved.</p>
+                        <ul>
+                            <li><Link to="#">shop</Link></li>
+                            <li><Link to="#">about</Link></li>
+                            <li><Link to="#">contact</Link></li>
+                            <li><Link to="#">blog</Link></li>
+                        </ul>
+                    </div>
                 </div>
             </footer>
         </div>

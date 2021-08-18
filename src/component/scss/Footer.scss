@@ -34,13 +34,6 @@ footer{
     border-top: 1px solid $color-bg;
     //display: none;
     .footer-container{
-        // padding: $padding-margin-md $padding-margin-md;
-        // @media (max-width: $medium) {
-        // padding: $padding-margin-sm $padding-margin-sm;
-        // }
-        // @media (max-width: $small) {
-        // padding: $padding-margin-ex-sm $padding-margin-ex-sm;
-        // }
         .grid-container{
             display: grid;
             grid-template-columns: 3fr 2fr 2fr 2fr 3fr;
@@ -102,7 +95,72 @@ footer{
                 .bottom-container{
                     color: $color-font-sec;
                     font-size: 14px;
+                    height: auto;
+                    max-height: 0;
+                    min-height: 0;
+                    overflow: hidden;
+                    transition: $transition;
+                    &.active{
+                        max-height: auto;
+                        min-height: 200px;
+                        transition: $transition;
+                    }
 
+                    .social-container{
+                        ul{
+                            display: flex;
+                            flex-direction: row;
+
+                            li{
+                                margin-right: 10px;
+                                position: relative;
+
+                                &:hover{
+                                    .media-name{
+                                        opacity: 1;
+                                        top: -32px;
+                                        display: flex;
+                                    }
+                                }
+                                .media-name{
+                                    display: none;
+                                    position: absolute;
+                                    font-size: 10px;
+                                    background: $color-font;
+                                    color: $color-bg;
+                                    padding: 2px 10px;
+                                    opacity: 0;
+                                    transition: $transition;
+                                    width: 150px;
+                                    height: 25px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    z-index: -1;                                   top: -20px;
+
+                                    &::before{
+                                        content: '';
+                                        position: absolute;
+                                        width: 8px;
+                                        height: 8px;
+                                        background: $color-font;
+                                        bottom: -4px;
+                                        left: 5px;
+                                        transform: rotate(45deg);
+                                    }
+                                }
+                                a{
+                                    color: $color-font-sec;
+                                    font-size: 20px;
+                                    transition: $transition;
+                                    z-index: 10;
+                                    &:hover{
+                                        color: $color-hover;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     .sub-sec{
                         margin-bottom: 20px;
                         display: flex;
@@ -171,6 +229,52 @@ footer{
                                 outline: none;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer-bottom{
+        background-color: $color-bg;
+        padding: $padding-margin-ex-sm $padding-margin-lg;
+        @media (max-width: $medium) {
+        padding: $padding-margin-ex-sm $padding-margin-md;
+        }
+        @media (max-width: $small) {
+        padding: $padding-margin-ex-sm $padding-margin-ex-sm;
+        }
+
+        .copyright{
+            color: $color-font-sec;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @media (max-width: $medium) {
+                flex-direction: column;
+            }
+
+            p{
+                font-size: 14px;
+                text-align: center;
+
+                span{
+                    color: $color-hover;
+                }
+            }
+
+            ul{
+                display: flex;
+
+                li{
+                    margin-left: 20px;
+
+                    a{
+                        color: $color-font-sec;
+                        transition: $transition;
+                        font-size: 14px;
+                        &:hover{
+                            color: $color-hover;
                         }
                     }
                 }
