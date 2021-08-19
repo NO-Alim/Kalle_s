@@ -104,6 +104,12 @@ const Trending = () => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div className="small-btn">
+                                                <div className="btn-group">
+                                                    <button className="btn-white"><BiShow /></button>
+                                                    <button className="btn-white"><FiShoppingCart /></button>
+                                                </div>
+                                            </div>
                                             </div>
                                             <div className="item-content">
                                                 <h5 className="name">{item.category}</h5>

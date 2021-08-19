@@ -1,0 +1,94 @@
+$color-bg: #fff;
+$color-bg-sec: rgb(240, 240, 240);
+$color-font: #000;
+$color-font-sec: rgb(109, 109, 109);
+$color-hover: rgb(93, 217, 255);
+
+$padding-margin-ex-lg: 150px;
+$padding-margin-lg: 100px;
+$padding-margin-md: 70px;
+$padding-margin-sm: 50px;
+$padding-margin-ex-sm: 20px;
+
+$transition: all 0.3s ease-in-out;
+//query
+$large: 1100px;
+$ex-medium: 900px;
+$medium: 768px;
+$small: 550px;
+$extraSmall: 450px;
+
+$heading: 70px;
+$heading-sm: 50px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 20px;
+$font-base: 16px;
+$font-base-lg: 18px;
+$logo-font: 'Lalezar', cursive;
+$button-font: 'Roboto Condensed', sans-serif;
+
+
+.shopnav{
+    padding: 10px 0;
+    border-top: 1px solid $color-bg-sec;
+    .nav-tag{
+        font-size: 16px;
+        font-weight: 500;
+        display: none;
+
+        &:hover{
+            color: $color-hover;
+
+        }
+        @media (max-width: $ex-medium) {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        span{
+            font-size: 26px;
+            font-weight: 500;
+        }
+    }
+
+    .link-container{
+        height: auto;
+        max-height: auto;
+        min-height: auto;
+        overflow: hidden;
+        transition: $transition;
+        @media (max-width: $ex-medium) {
+            min-height: 0;
+            max-height: 0;
+        }
+        &.active{
+            max-height: auto;
+            transition: $transition;
+            @media (max-width: $ex-medium) {
+                min-height: 300px;
+            }
+        }
+        ul{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media (max-width: $ex-medium) {
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            li{
+                padding: 0 8px;
+                a{
+                    &.active{
+                        color: $color-hover;
+                    }
+                }
+            }
+        }
+    }
+}

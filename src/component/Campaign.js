@@ -4,7 +4,11 @@ import {BiShow} from 'react-icons/bi'
 import './scss/Campaign.scss'
 import { useEffect } from 'react'
 import { useState } from 'react'
+
+const img1 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-12_360x.jpg?v=1581557817'
+const img2 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-11_1080x.jpg?v=1581557817'
 const Campaign = () => {
+    const [imgTwoActive, setImgTwoActive] = useState(img2)
     const today = new Date().getTime();
     const launchDate = new Date('dec 31, 2021 13:00:00').getTime();
     const [distance, setDistance] = useState(launchDate - today);
@@ -39,7 +43,7 @@ const Campaign = () => {
                         </div>
                     </div>
                     <div className="grid-item">
-                        <div className="img-container" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-11_1080x.jpg?v=1581557817')`}}>
+                        <div className="img-container img-container-two" style={{backgroundImage: `url(${imgTwoActive})`}} onMouseOver={() => setImgTwoActive(img1)} onMouseOut={() => setImgTwoActive(img2)}>
                             <span className="discount">-30%</span>
                             {distance < 0 ? <h2 className="h3 times-up">opps!!! Times Up</h2> : <div className="timers">
                                 <div className="timer day">
