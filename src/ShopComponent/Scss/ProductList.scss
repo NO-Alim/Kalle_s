@@ -108,6 +108,10 @@ $button-font: 'Roboto Condensed', sans-serif;
         }
 
         .sort{
+            width: 200px;
+            @media (max-width: $small) {
+                width: 70px;
+            }
             .sort-btn-container{
                 width: 150px;
                 height: 40px;
@@ -154,9 +158,9 @@ $button-font: 'Roboto Condensed', sans-serif;
                         padding: 10px;
                         flex-direction: column;
                     }
-                    .wishlist{
-                        display: none;
-                    }
+                    // .wishlist{
+                    //     display: none;
+                    // }
                     .img-container{
                         min-width: 160px;
                         min-height: 220px;
@@ -215,6 +219,7 @@ $button-font: 'Roboto Condensed', sans-serif;
         background-position: center;
         padding-top: 120%;
         position: relative;
+        cursor: pointer;
 
         &::before{
             content: '';
@@ -232,6 +237,9 @@ $button-font: 'Roboto Condensed', sans-serif;
             height: 100%;
             transition: $transition;
             top: 0;
+            @media (max-width: 400px) {
+                opacity: 1;
+            }
             &:hover{
                 opacity: 1;
                 background: rgba($color-font-sec, $alpha: 0.3);
@@ -248,10 +256,6 @@ $button-font: 'Roboto Condensed', sans-serif;
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-
-                @media (max-width: 400px) {
-                    display: none;
-                }
                 .wish-btn{
                     font-size: 22px;
                     cursor: pointer;
@@ -279,6 +283,10 @@ $button-font: 'Roboto Condensed', sans-serif;
                         left: -5px;
                         top: 50%;
                         transform: translateY(-50%) rotate(45deg);
+                    }
+
+                    @media (max-width: 400px) {
+                        display: none;
                     }
                 }
 
@@ -385,6 +393,12 @@ $button-font: 'Roboto Condensed', sans-serif;
             line-height: 15px;
             margin-top: 15px;
             margin-bottom: 0;
+            cursor: pointer;
+            transition: $transition;
+
+            &:hover{
+                color: $color-hover;
+            }
         }
 
         .price{
@@ -398,6 +412,7 @@ $button-font: 'Roboto Condensed', sans-serif;
 
         .description{
             display: none;
+            color: $color-font-sec;
         }
 
         .content-btn{
@@ -478,3 +493,7 @@ $button-font: 'Roboto Condensed', sans-serif;
         }
     }
 }
+
+
+
+//select 

@@ -7,26 +7,99 @@ import { useGlobalContext } from '../context'
 import { useWindowWidth } from '@react-hook/window-size'
 import './Scss/ProductList.scss'
 import { useEffect } from 'react'
+import Select from 'react-select'
 
+const options = [
+    //{value: 'Selling', label: 'Featured'},
+    {value: 'Best', label: 'Best selling'},
+    {value: 'A-Z', label: 'A-z'},
+    {value: 'Z-A', label: 'Z-A'},
+    {value: 'Low', label: 'Price, low to high'},
+    {value: 'High', label: 'Price, high to low'},
+
+]
+
+const customStyle = {
+    option: (provided, state) => ({
+        ...provided,
+        color: state.isSelected ? 'white' : 'grey',
+        //backgroundColor: 'red'
+        width: 'auto'
+    }),
+    dropdownIndicator: (provided) => ({
+        ...provided,
+        //display: 'none'
+    }),
+    control: () => ({
+        display: 'flex',
+        border: '1px solid rgb(109, 109, 109)',
+        borderRadius: '30px'
+    }),
+    menu: (provided) => ({
+        ...provided,
+        width: '250px',
+        right: '0'
+    }) 
+}
 const ProductList = () => {
-    const {products, loading} = useGlobalContext();
+    const {products, loading, setLoading} = useGlobalContext();
     const [grid, setGrid] = useState(5);
     const width = useWindowWidth();
 
+    const [productList, setProductList] = useState(products);
+    const [selectedOption, setSelectedOption] = useState(null);
+
+
+    const handleChange = (e) => {
+        setSelectedOption(e);
+    }
+
     useEffect(()=> {
-        if (width > 900) {
+        if (width >= 901 && width < 1100) {
             setGrid(4);
         }
-        if (width > 768) {
+        if (width > 769 && width <= 900) {
             setGrid(3)
         }
-        if (width > 550) {
+        if (width > 550 && width <= 768) {
             setGrid(2)
         }
-        if (width > 400) {
+        if (width < 400) {
             setGrid(1)
+
         }
-    },[width])
+    },[width]);
+
+    useEffect(() => {
+        if (selectedOption) {
+            if (selectedOption.value.toLowerCase() === 'low') {
+                setProductList(products.sort((a,b) => (a.price > b.price) ? 1 : -1));
+            }
+            if (selectedOption.value.toLowerCase() === 'high') {
+                setProductList(products.sort((a,b) => (a.price < b.price) ? 1 : -1))
+            }
+            if (selectedOption.value.toLowerCase() === 'a-z') {
+                setProductList(products.sort((a,b) => (a.category > b.category)*2-1));
+            }
+
+            if (selectedOption.value.toLowerCase() === 'z-a') {
+                setProductList(products.sort((a,b) => (a.category < b.category)*2-1));
+            }
+
+            if (selectedOption.value.toLowerCase() === 'best') {
+                setProductList(products);
+            }
+        }
+
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        },500);
+    },[selectedOption]);
+
+    useEffect(() => {
+        setProductList(products);
+    },[products,loading,selectedOption])
     return (
         <div>
             <div className="productList section-container">
@@ -68,9 +141,11 @@ const ProductList = () => {
                         </div>
                     </div>
                     <div className="sort">
-                        <div className="sort-btn-container">
+                        <Select menuPlacement="auto" menuPosition="fixed" dropdownIndicator="none" className="custom-select" styles={customStyle} options={options} placeholder="sort"
+                        value={selectedOption} onChange={(e) => handleChange(e)}/>
+                        {/* <div className="sort-btn-container">
                             <p className="sort-btn">sort<span><RiArrowDropDownLine /></span></p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

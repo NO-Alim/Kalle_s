@@ -26,7 +26,7 @@ const AppProvider = ({children}) => {
     useEffect(() => {
         fetchProduct();
     },[searchText])
-    return <AppContext.Provider value={{loading,products}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{loading,products,setLoading}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

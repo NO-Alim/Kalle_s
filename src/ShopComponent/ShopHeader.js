@@ -7,7 +7,10 @@ const ShopHeader = () => {
     return (
         <div>
             <div className="shop-header">
-                <h3 className="h3">{id}</h3>
+                <div className="header-content">
+                    <h3 className="h3">{id}</h3>
+                    <p>Shop through our latest selection of Women’s Clothing and Accessories.</p>
+                </div>
             </div>
         </div>
     )

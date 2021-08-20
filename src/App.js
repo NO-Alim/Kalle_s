@@ -7,12 +7,14 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import WishList from "./pages/WishList";
 import Footer from "./component/Footer";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
+        <ScrollToTop />
         <Route exact path="/">
           <Home />
         </Route>

@@ -42,14 +42,23 @@ $button-font: 'Roboto Condensed', sans-serif;
         content: '';
         height: 100%;
         width: 100%;
-        background-color: rgba($color-font, $alpha: 0.5);
+        background-color: rgba($color-font, $alpha: 0.6);
     }
-    h3{
+    .header-content{
+        width: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        font-weight: 500;
-        color: $color-bg;
+        text-align: center;
+        
+        h3{
+            font-weight: 500;
+            color: $color-bg;
+        }
+
+        p{
+            color: $color-bg;
+        }
     }
 }
