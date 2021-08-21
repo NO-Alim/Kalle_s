@@ -8,6 +8,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import './Scss/ProductList.scss'
 import { useEffect } from 'react'
 import Select from 'react-select'
+import { useParams } from 'react-router-dom'
 
 const options = [
     //{value: 'Selling', label: 'Featured'},
@@ -46,10 +47,11 @@ const ProductList = () => {
     const [grid, setGrid] = useState(5);
     const width = useWindowWidth();
 
-    const [productList, setProductList] = useState(products);
+    const [itemList, setItemList] = useState(products);
     const [selectedOption, setSelectedOption] = useState(null);
+    const [localLoading, setLocalLoading] = useState(true);
 
-
+    const {id} = useParams();
     const handleChange = (e) => {
         setSelectedOption(e);
     }
@@ -70,36 +72,61 @@ const ProductList = () => {
         }
     },[width]);
 
+    useEffect(() =>{
+        setItemList(products)
+    },[loading])
+
     useEffect(() => {
-        if (selectedOption) {
-            if (selectedOption.value.toLowerCase() === 'low') {
-                setProductList(products.sort((a,b) => (a.price > b.price) ? 1 : -1));
+        if (id) {
+            if (id.toLowerCase() !== 'all' ) {
+                setItemList(products.filter(item => item.title.toLowerCase().includes(id.toLowerCase()) || item.description.toLowerCase().includes(id.toLowerCase()) || item.category.toLowerCase().includes(id.toLowerCase())))
             }
-            if (selectedOption.value.toLowerCase() === 'high') {
-                setProductList(products.sort((a,b) => (a.price < b.price) ? 1 : -1))
+            else{
+                setItemList(products)
             }
-            if (selectedOption.value.toLowerCase() === 'a-z') {
-                setProductList(products.sort((a,b) => (a.category > b.category)*2-1));
-            }
+        }
+        setLocalLoading(true);
+        setTimeout(() => {
+            setLocalLoading(false);
+        },500);
+    },[id])
 
-            if (selectedOption.value.toLowerCase() === 'z-a') {
-                setProductList(products.sort((a,b) => (a.category < b.category)*2-1));
-            }
-
-            if (selectedOption.value.toLowerCase() === 'best') {
-                setProductList(products);
+    useEffect(() =>{
+        if (itemList) {
+            if (selectedOption) {
+                if (selectedOption.value.toLowerCase() === 'low') {
+                    itemList.sort((a,b) => (a.price > b.price) ? 1 : -1)
+                }
+                if (selectedOption.value.toLowerCase() === 'high') {
+                    itemList.sort((a,b) => (a.price < b.price) ? 1 : -1)
+                }
+                if (selectedOption.value.toLowerCase() === 'a-z') {
+                    itemList.sort((a,b) => (a.title > b.title)*2-1)
+                }
+    
+                if (selectedOption.value.toLowerCase() === 'z-a') {
+                    itemList.sort((a,b) => (a.title < b.title)*2-1)
+                }
+    
+                if (selectedOption.value.toLowerCase() === 'best') {
+                    itemList.sort()
+                }
             }
         }
 
-        setLoading(true);
+        setLocalLoading(true);
         setTimeout(() => {
-            setLoading(false);
-        },500);
+            setLocalLoading(false);
+        },200);
     },[selectedOption]);
 
-    useEffect(() => {
-        setProductList(products);
-    },[products,loading,selectedOption])
+    if (loading) {
+        return(
+            <div className="section-container">
+                <h2>loading...</h2>
+            </div>
+        )
+    }
     return (
         <div>
             <div className="productList section-container">
@@ -150,8 +177,8 @@ const ProductList = () => {
                 </div>
 
                 <div className='products-container mr-top-bottom-5'>
-                    {loading ? <h2>loading.....</h2> : <div className={`product-grid-container product-grid-container${grid}`} style={{gridTemplateColumns: `repeat(${grid}, 1fr)`}}>
-                        {products.map((item,ind) =>{
+                    {localLoading ? <h2>loading.....</h2> : <div className={`product-grid-container product-grid-container${grid}`} style={{gridTemplateColumns: `repeat(${grid}, 1fr)`}}>
+                        {itemList.map((item,ind) =>{
                             return(
                                 <div className={`product-item product-item${ind}`} key={ind}>
                                     <div className="item-container">
@@ -180,8 +207,8 @@ const ProductList = () => {
                                             </div>
                                         </div>
                                         <div className="item-content">
-                                            <h5 className="name">{item.category}</h5>
-                                            <span className="description">{item.description}</span>
+                                            <h5 className="name">{item.title}</h5>
+                                            <span className="description">{((item.description).replace(/^(.{200}[^\s]*).*/, "$1") + "\n")}...</span>
                                             <span className="price">${item.price}</span>
                                             <div className="color-container">
                                                 <div className="colors">

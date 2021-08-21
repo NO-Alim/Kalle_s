@@ -20,7 +20,7 @@ const ShopNav = () => {
                 <div className={`link-container ${accordion ? 'active' : null}`} >
                     <ul>
                         <li>
-                            <NavLink exact to="/shop/acessories">Acessories</NavLink>
+                            <NavLink exact to="/shop/all">All</NavLink>
                         </li>
                         <li>
                             <NavLink exact to="/shop/bottom">Bottom</NavLink>

@@ -141,7 +141,7 @@ const Navbar = () => {
                             <div className="links-container">
                                 <ul>
                                     <li><NavLink exact to="/">Home</NavLink></li>
-                                    <li><NavLink exact to="/shop/Acessories">Shop</NavLink></li>
+                                    <li><NavLink exact to="/shop/all">Shop</NavLink></li>
                                     <li><NavLink exact to="/product">Product</NavLink></li>
                                     <li><NavLink exact to="/blog">Blog</NavLink></li>
                                     <li><NavLink exact to="/about">About</NavLink></li>
