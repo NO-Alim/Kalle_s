@@ -8,6 +8,7 @@ import About from "./pages/About";
 import WishList from "./pages/WishList";
 import Footer from "./component/Footer";
 import ScrollToTop from "./ScrollToTop";
+import AddCartModal from "./component/AddCartModal";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <ScrollToTop />
+        <AddCartModal />
         <Route exact path="/">
           <Home />
         </Route>

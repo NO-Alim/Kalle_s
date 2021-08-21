@@ -6,7 +6,7 @@ import {BiShow} from 'react-icons/bi'
 import './scss/Trending.scss'
 
 const Trending = () => {
-    const {products,loading} = useGlobalContext();
+    const {products,loading,toggleAddCartModal} = useGlobalContext();
     const SampleNextArrow = (props) =>{
         const {className, style , onClick} = props;
         return (
