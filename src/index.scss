@@ -52,7 +52,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif;
-  width: calc(100vw - (100vw - 100%));
+  max-width: calc(100vw - (100vw - 100%));
   overflow-x: hidden;
   a{
     text-decoration: none;

@@ -42,6 +42,16 @@ $font-base-lg: 18px;
             }
         }
         .item-container{
+            &:hover{
+                .img-container{
+                    .small-btn{
+                        transform: scale(1);
+                    }
+                    .wishlist{
+                        transform: scale(1);
+                    }
+                }
+            }
             .img-container{
                 // background-size: 90% 90%;
                 // background-repeat: no-repeat;

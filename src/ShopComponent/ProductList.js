@@ -8,7 +8,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import './Scss/ProductList.scss'
 import { useEffect } from 'react'
 import Select from 'react-select'
-import { useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 
 const options = [
     //{value: 'Selling', label: 'Featured'},
@@ -49,6 +49,7 @@ const ProductList = () => {
     const [itemList, setItemList] = useState(products);
     const [selectedOption, setSelectedOption] = useState(null);
     const [localLoading, setLocalLoading] = useState(true);
+    const location = useHistory();
 
     const {id} = useParams();
     const handleChange = (e) => {
@@ -78,7 +79,7 @@ const ProductList = () => {
     useEffect(() => {
         if (id) {
             if (id.toLowerCase() !== 'all' ) {
-                setItemList(products.filter(item => item.title.toLowerCase().includes(id.toLowerCase()) || item.description.toLowerCase().includes(id.toLowerCase()) || item.category.toLowerCase().includes(id.toLowerCase())))
+                setItemList(products.filter(item => item.category.toLowerCase().includes(id.toLowerCase())))
             }
             else{
                 setItemList(products)
@@ -182,7 +183,7 @@ const ProductList = () => {
                                 <div className={`product-item product-item${ind}`} key={ind}>
                                     <div className="item-container">
                                         <div className="img-container trending-img-container" style={{backgroundImage: `url('${item.image}')`}}>
-                                            <div className="img-content" onClick={() => console.log("img content")}>
+                                            <div className="img-content" onClick={() => location.push(`/product/${item.id}`)}>
                                                 {/* <div className="wishlist">
                                                     <span className="wish-btn"><FiHeart /></span>
                                                     <span className="wish-tag">Add to Wishlist</span>
@@ -200,8 +201,8 @@ const ProductList = () => {
                                             </div>
                                             <div className="small-btn">
                                                 <div className="btn-group">
-                                                    <button className="btn-white"><BiShow /></button>
-                                                    <button className="btn-white" onClickCapture={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
+                                                    <button className="btn-white" onClick={() => location.push(`/product/${item.id}`)}><BiShow /></button>
+                                                    <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
                                                 </div>
                                             </div>
                                             <div className="wishlist">

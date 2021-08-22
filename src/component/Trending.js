@@ -90,7 +90,7 @@ const Trending = () => {
                                         <div className="item-container">
                                             <div className="img-container trending-img-container">
                                                 <div className="img"  style={{backgroundImage: `url('${item.image}')`}}></div>
-                                                <div className="img-content" onClick={() => console.log("img content")}>
+                                                <div className="img-content" onClick={() => location.push(`/product/${item.id}`)}>
                                                     {/* <div className="wishlist">
                                                         <span className="wish-btn" onClick={() => console.log('heart')}><FiHeart /></span>
                                                         <span className="wish-tag">Add to Wishlist</span>
@@ -108,7 +108,7 @@ const Trending = () => {
                                                 </div>
                                                 <div className="small-btn">
                                                     <div className="btn-group">
-                                                        <button className="btn-white"><BiShow /></button>
+                                                        <button className="btn-white" onClick={() => location.push(`/product/${item.id}`)}><BiShow /></button>
                                                         <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
                                                     </div>
                                                 </div>

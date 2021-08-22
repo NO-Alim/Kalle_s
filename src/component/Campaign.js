@@ -4,11 +4,14 @@ import {BiShow} from 'react-icons/bi'
 import './scss/Campaign.scss'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useGlobalContext } from '../context'
+import { useHistory } from 'react-router-dom'
 
 const img1 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-12_360x.jpg?v=1581557817'
 const img2 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-11_1080x.jpg?v=1581557817'
 const Campaign = () => {
     const [imgTwoActive, setImgTwoActive] = useState(img2)
+    const {toggleAddCartModal} = useGlobalContext();
     const today = new Date().getTime();
     const launchDate = new Date('dec 31, 2021 13:00:00').getTime();
     const [distance, setDistance] = useState(launchDate - today);
@@ -17,6 +20,8 @@ const Campaign = () => {
     const [hr,setHr] = useState(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
     const [mins, setMins] = useState(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
     const [sec, setSec] = useState(0);
+
+    const location = useHistory();
 
 
     useEffect(() => {
@@ -45,6 +50,9 @@ const Campaign = () => {
                     <div className="grid-item">
                         <div className="img-container img-container-two" style={{backgroundImage: `url(${imgTwoActive})`}} onMouseOver={() => setImgTwoActive(img1)} onMouseOut={() => setImgTwoActive(img2)}>
                             <span className="discount">-30%</span>
+                            <div className="img-content"  onClick={() => location.push(`/product/5`)}>
+                            </div>
+
                             {distance < 0 ? <h2 className="h3 times-up">opps!!! Times Up</h2> : <div className="timers">
                                 <div className="timer day">
                                     <span className="number">{days}</span>
@@ -63,48 +71,41 @@ const Campaign = () => {
                                     <span className="text">sec</span>
                                 </div>
                             </div>}
+                            <div className="small-btn">
+                                <div className="btn-group">
+                                    <button className="btn-white" onClick={() => location.push(`/product/5`)}><BiShow /></button>
+                                    <button className="btn-white" onClickCapture={() => toggleAddCartModal(5)}><FiShoppingCart /></button>
+                                </div>
+                            </div>
+                            <div className="color-container">
+                                <div className="colors">
+                                    <div className="single-color">
+                                        <span className="color" style={{backgroundColor:'pink'}}></span>
+                                        <span className="color-name">pink</span>
+                                    </div>
+                                    <div className="single-color">
+                                        <span className="color" style={{backgroundColor:'black'}}></span>
+                                        <span className="color-name">Black</span>
+                                    </div>
+                                    <div className="single-color">
+                                        <span className="color" style={{backgroundColor:'Grey'}}></span>
+                                        <span className="color-name">Grey</span>
+                                    </div>
+                                    <div className="single-color">
+                                        <span className="color" style={{backgroundColor:'blue'}}></span>
+                                        <span className="color-name">Blue</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="wishlist">
+                                <span className="wish-btn"><FiHeart /></span>
+                                <span className="wish-tag">Add to Wishlist</span>
+                            </div>
                             
-                            <div className="img-content">
-                                <div className="wishlist">
-                                    <span className="wish-btn"><FiHeart /></span>
-                                    <span className="wish-tag">Add to Wishlist</span>
-                                </div>
-                                <div className="btn-container">
-                                    <div className="view-btns">
-                                        <button className="btn-white">Quick View</button>
-                                        <button className="btn-black"><BiShow /></button>
-                                    </div>
-                                    <div className="shop-btns">
-                                        <button className="btn-white">Quick Shop</button>
-                                        <button className="btn-black"><FiShoppingCart /></button>
-                                    </div>
-                                </div>
-                                <div className="item-content">
-                                    <h5 className="name">Item name</h5>
-                                    <span className="price">$234</span>
-                                    <span className="secondary-price">$198</span>
-                                    
-                                    <div className="color-container">
-                                        <div className="colors">
-                                            <div className="single-color">
-                                                <span className="color" style={{backgroundColor:'pink'}}></span>
-                                                <span className="color-name">pink</span>
-                                            </div>
-                                            <div className="single-color">
-                                                <span className="color" style={{backgroundColor:'black'}}></span>
-                                                <span className="color-name">Black</span>
-                                            </div>
-                                            <div className="single-color">
-                                                <span className="color" style={{backgroundColor:'Grey'}}></span>
-                                                <span className="color-name">Grey</span>
-                                            </div>
-                                            <div className="single-color">
-                                                <span className="color" style={{backgroundColor:'blue'}}></span>
-                                                <span className="color-name">Blue</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="item-content">
+                                <h5 className="name">Item name</h5>
+                                <span className="price">$234</span>
+                                <span className="secondary-price">$198</span>
                             </div>
                         </div>
                     </div>

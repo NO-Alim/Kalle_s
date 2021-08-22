@@ -161,7 +161,7 @@ $button-font: 'Roboto Condensed', sans-serif;
                     flex-direction: row;
                     padding: 20px;
                     border: 1px solid rgba($color-font-sec, $alpha: 0.3);
-                    @media (max-width: 350px) {
+                    @media (max-width: $small) {
                         padding: 10px;
                         flex-direction: column;
                     }
@@ -177,6 +177,9 @@ $button-font: 'Roboto Condensed', sans-serif;
                         padding-top: 0;
                         flex: 1;
                         max-height: auto;
+                        @media (max-width: $small) {
+                            padding-top: 120%;
+                        }
                         .btn-container{
                             display: none;
                         }
@@ -223,11 +226,24 @@ $button-font: 'Roboto Condensed', sans-serif;
 //for any global style product
 //please linkup scss file with your js file
 .product-item{
+    &:hover{
+        .item-container{
+            .img-container{
+                .small-btn{
+                    transform: scale(1);
+                }
+                .wishlist{
+                    transform: scale(1);
+                }
+            }
+        }
+    }
 }
 .item-container{
     height: 100%;
     display: flex;
     flex-direction: column;
+
     .img-container{
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -246,15 +262,6 @@ $button-font: 'Roboto Condensed', sans-serif;
             top: 0;
             left: 0;
             background: rgba($color-font-sec, $alpha: 0.1);
-        }
-
-        &:hover{
-            .small-btn{
-                transform: scale(1);
-            }
-            .wishlist{
-                transform: scale(1);
-            }
         }
         .img-content{
             opacity: 0;

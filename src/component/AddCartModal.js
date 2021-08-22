@@ -5,15 +5,16 @@ import { useGlobalContext } from '../context';
 import { useEffect } from 'react';
 import {FaTimes,FaPlus,FaMinus,FaArrowRight} from 'react-icons/fa'
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 const AddCartModal = () => {
     const {toggleAddCartModal,addCartModal,addCartId,products} = useGlobalContext();
     const [count, setCount] = useState(1);
+    const location = useHistory();
 
     const selectedProduct = (products.filter(item => item.id === addCartId))
 
-    console.log(selectedProduct);
     useEffect(() => {
         if (addCartModal) {
             document.body.style.overflow = 'hidden';
@@ -31,10 +32,10 @@ const AddCartModal = () => {
             backgroundColor: 'rgba(109, 109, 109,0.4)'
             }
         }}>
-            <div>
+            <div className="modal-content-container">
                 {selectedProduct.map((item,ind) => {
                     return(
-                        <div>
+                        <div key={ind}>
                             <div className="close-container">
                                 <span onClick={() => toggleAddCartModal()}><FaTimes /></span>
                             </div>
@@ -80,7 +81,7 @@ const AddCartModal = () => {
                             </div>
                             <div className="button-container">
                                 <button className="btn-black">Add To Cart</button>
-                                <span>View full details <i><FaArrowRight /></i></span>
+                                <span onClick={() => {location.push(`/product/${addCartId}`);toggleAddCartModal()}}>View full details <i><FaArrowRight /></i></span>
                             </div>
                         </div>
                     )

@@ -8,13 +8,14 @@ import img2 from '../img/model2.png'
 import img3 from '../img/model3.png'
 import './scss/Header.scss'
 import { useSpring, animated } from 'react-spring'
+import { useHistory } from 'react-router-dom';
 
 const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
 const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
 
 const Header = () => {
     const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }))
-
+    const location = useHistory();
     const settings = {
         dots: true,
         infinite: true,
@@ -25,7 +26,7 @@ const Header = () => {
         fade: true,
     }
     return (
-        <div>
+        <div className="header">
             <Slider {...settings}>
                 <div className="slick-div bg-sec" >
                     <div className="slick-content" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
@@ -38,7 +39,7 @@ const Header = () => {
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>
                             <h1 className="heading bold">New arrival collection</h1>
-                            <button className="btn-black">Explore Now</button>
+                            <button className="btn-black" onClick={() => location.push('/shop/all')}>Explore Now</button>
                         </div>
                         </Fade>
                     </div>
@@ -54,7 +55,7 @@ const Header = () => {
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>
                             <h1 className="heading bold">New arrival collection</h1>
-                            <button className="btn-black">Explore Now</button>
+                            <button className="btn-black" onClick={() => location.push('/shop/all')}>Explore Now</button>
                         </div>
                         </Fade>
                     </div>
@@ -70,7 +71,7 @@ const Header = () => {
                         <div className="content">
                             <h3 className="h4 tx-cp bold">Summer 2021</h3>
                             <h1 className="heading bold">New arrival collection</h1>
-                            <button className="btn-black">Explore Now</button>
+                            <button className="btn-black" onClick={() => location.push('/shop/all')}>Explore Now</button>
                         </div>
                         </Fade>
                     </div>

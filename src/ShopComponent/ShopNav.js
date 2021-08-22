@@ -3,10 +3,17 @@ import { NavLink } from 'react-router-dom'
 import {RiArrowDropDownLine,RiArrowDropUpLine} from 'react-icons/ri'
 import './Scss/ShopNav.scss'
 import { useWindowWidth } from '@react-hook/window-size'
+import { useGlobalContext } from '../context'
 
 const ShopNav = () => {
     const width = useWindowWidth();
+    const {products} = useGlobalContext();
     const [accordion, setAccordion] = useState(false);
+
+    const getUniqList = (arr,key) => {
+        return [...new Map(arr.map(item => [item[key],item])).values()];
+    }
+    const AllCategories = getUniqList(products, 'category');
 
     useEffect(() => {
         if(width > 900){
@@ -22,36 +29,13 @@ const ShopNav = () => {
                         <li>
                             <NavLink exact to="/shop/all">All</NavLink>
                         </li>
-                        <li>
-                            <NavLink exact to="/shop/bottom">Bottom</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/denim">Denim</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/dress">Dress</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/jackets">Jackets</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/jewellry">Jewellry</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/men">Men</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/shoes">Shoes</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/t-shirt">T-shirt</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/tops">Tops</NavLink>
-                        </li>
-                        <li>
-                            <NavLink exact to="/shop/women">Women</NavLink>
-                        </li>
+                        {AllCategories.map((item,ind) => {
+                            return (
+                                <li key={ind}>
+                                    <NavLink exact to={`/shop/${item.category.toLowerCase()}`}>{item.category}</NavLink>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>

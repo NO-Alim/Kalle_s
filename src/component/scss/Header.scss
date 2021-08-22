@@ -28,6 +28,11 @@ $h4: 20px;
 $font-base: 16px;
 $font-base-lg: 18px;
 
+.header{
+    width: 100%;
+    overflow: hidden;
+}
+
 .slick-div{
     position: relative;
     .slick-content{

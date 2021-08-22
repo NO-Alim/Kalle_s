@@ -42,6 +42,10 @@ nav{
             background-color: $color-bg-sec;
             padding: 5px 10px;
 
+            @media (max-width: 320px) {
+                flex-direction: column;
+                display: none;
+            }
             .top-nav-container{
                 display: flex;
                 align-items: center;

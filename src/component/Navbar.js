@@ -143,7 +143,7 @@ const Navbar = () => {
                                     <li><NavLink exact to="/">Home</NavLink></li>
                                     <li><NavLink exact to="/shop/all">Shop</NavLink></li>
                                     <li><NavLink exact to="/product">Product</NavLink></li>
-                                    <li><NavLink exact to="/blog">Blog</NavLink></li>
+                                    <li><NavLink exact to="/blogs">Blog</NavLink></li>
                                     <li><NavLink exact to="/about">About</NavLink></li>
                                 </ul>
                             </div>
