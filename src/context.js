@@ -9,7 +9,8 @@ const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [searchText, setSearchText] = useState('');
-    const [addCartModal, setAddCartModal] = useState(true);
+    const [addCartModal, setAddCartModal] = useState(false);
+    const [addCartId, setAddCartId] = useState(null);
 
     const fetchProduct = useCallback(async () => {
         setLoading(true);
@@ -25,15 +26,16 @@ const AppProvider = ({children}) => {
     })
 
     //toggle AddCartModal
-    const toggleAddCartModal = () => {
+    const toggleAddCartModal = (id) => {
         setAddCartModal(!addCartModal);
+        setAddCartId(id);
     }
 
 
     useEffect(() => {
         fetchProduct();
     },[searchText])
-    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal,addCartId}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

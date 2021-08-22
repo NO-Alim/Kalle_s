@@ -4,9 +4,11 @@ import { useGlobalContext } from '../context';
 import {FiHeart,FiShoppingCart} from 'react-icons/fi'
 import {BiShow} from 'react-icons/bi'
 import './scss/Trending.scss'
+import { useHistory, useParams } from 'react-router-dom';
 
 const Trending = () => {
     const {products,loading,toggleAddCartModal} = useGlobalContext();
+    const location = useHistory();
     const SampleNextArrow = (props) =>{
         const {className, style , onClick} = props;
         return (
@@ -67,8 +69,7 @@ const Trending = () => {
         ]
         
     }
-
-    console.log(products);
+    
     if (loading) {
         return(
             <h1>Loading</h1>
@@ -87,29 +88,34 @@ const Trending = () => {
                                 return(
                                     <div className="slick-item" key={ind}>
                                         <div className="item-container">
-                                            <div className="img-container trending-img-container" style={{backgroundImage: `url('${item.image}')`}}>
-                                                <div className="img-content">
-                                                    <div className="wishlist">
-                                                        <span className="wish-btn"><FiHeart /></span>
+                                            <div className="img-container trending-img-container">
+                                                <div className="img"  style={{backgroundImage: `url('${item.image}')`}}></div>
+                                                <div className="img-content" onClick={() => console.log("img content")}>
+                                                    {/* <div className="wishlist">
+                                                        <span className="wish-btn" onClick={() => console.log('heart')}><FiHeart /></span>
                                                         <span className="wish-tag">Add to Wishlist</span>
-                                                    </div>
-                                                    <div className="btn-container">
+                                                    </div> */}
+                                                    {/* <div className="btn-container">
                                                         <div className="view-btns">
                                                             <button className="btn-white">Quick View</button>
                                                             <button className="btn-black"><BiShow /></button>
                                                         </div>
                                                         <div className="shop-btns">
-                                                            <button className="btn-white">Quick Shop</button>
-                                                            <button className="btn-black"><FiShoppingCart /></button>
+                                                            <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}>Quick Shop</button>
+                                                            <button className="btn-black" onClick={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                                 <div className="small-btn">
-                                                <div className="btn-group">
-                                                    <button className="btn-white"><BiShow /></button>
-                                                    <button className="btn-white"><FiShoppingCart /></button>
+                                                    <div className="btn-group">
+                                                        <button className="btn-white"><BiShow /></button>
+                                                        <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div className="wishlist">
+                                                    <span className="wish-btn" onClick={() => console.log('heart')} onClick={() => console.log('heart')}><FiHeart /></span>
+                                                    <span className="wish-tag">Add to Wishlist</span>
+                                                </div>
                                             </div>
                                             <div className="item-content">
                                                 <h5 className="name">{item.category}</h5>

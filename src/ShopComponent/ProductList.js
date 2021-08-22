@@ -43,10 +43,9 @@ const customStyle = {
     }) 
 }
 const ProductList = () => {
-    const {products, loading, setLoading} = useGlobalContext();
+    const {products, loading, setLoading,toggleAddCartModal} = useGlobalContext();
     const [grid, setGrid] = useState(5);
     const width = useWindowWidth();
-
     const [itemList, setItemList] = useState(products);
     const [selectedOption, setSelectedOption] = useState(null);
     const [localLoading, setLocalLoading] = useState(true);
@@ -183,12 +182,12 @@ const ProductList = () => {
                                 <div className={`product-item product-item${ind}`} key={ind}>
                                     <div className="item-container">
                                         <div className="img-container trending-img-container" style={{backgroundImage: `url('${item.image}')`}}>
-                                            <div className="img-content">
-                                                <div className="wishlist">
+                                            <div className="img-content" onClick={() => console.log("img content")}>
+                                                {/* <div className="wishlist">
                                                     <span className="wish-btn"><FiHeart /></span>
                                                     <span className="wish-tag">Add to Wishlist</span>
-                                                </div>
-                                                <div className="btn-container">
+                                                </div> */}
+                                                {/* <div className="btn-container">
                                                     <div className="view-btns">
                                                         <button className="btn-white">Quick View</button>
                                                         <button className="btn-black"><BiShow /></button>
@@ -197,13 +196,17 @@ const ProductList = () => {
                                                         <button className="btn-white">Quick Shop</button>
                                                         <button className="btn-black"><FiShoppingCart /></button>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <div className="small-btn">
                                                 <div className="btn-group">
                                                     <button className="btn-white"><BiShow /></button>
-                                                    <button className="btn-white"><FiShoppingCart /></button>
+                                                    <button className="btn-white" onClickCapture={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
                                                 </div>
+                                            </div>
+                                            <div className="wishlist">
+                                                <span className="wish-btn"><FiHeart /></span>
+                                                <span className="wish-tag">Add to Wishlist</span>
                                             </div>
                                         </div>
                                         <div className="item-content">
@@ -231,7 +234,7 @@ const ProductList = () => {
                                                 </div>
                                             </div>
                                             <div className="content-btn">
-                                                <button className="btn-white">Add Cart</button>
+                                                <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}>Add Cart</button>
                                                 <button className="btn-white">Quick View</button>
                                             </div>
                                         </div>
