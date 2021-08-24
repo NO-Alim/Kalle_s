@@ -73,7 +73,7 @@ $font-base-lg: 18px;
         }
         .img-container{
             flex: 1;
-            margin-right: 20px;
+            margin-right: 50px;
             .img{
                 background-size: 100% auto;
                 background-repeat: no-repeat;
@@ -97,7 +97,9 @@ $font-base-lg: 18px;
                 margin-bottom: 10px;
                 display: flex;
                 justify-content: space-between;
-
+                @media (max-width: $small) {
+                    flex-direction: column;
+                }
                 .price{
                     h3{
                         font-weight: 400;

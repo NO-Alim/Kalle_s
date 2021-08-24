@@ -101,13 +101,9 @@ nav{
                 align-items: center;
                 justify-content: space-between;
 
-                .menu-container{
-                    display: none;
-                    @media (max-width: $medium) {
-                        display: block;
-                        flex: 1;
-                    }
-                }
+                //here menu
+
+                //
                 .logo-container{
                     flex: 1;
                     text-align: left;
@@ -224,13 +220,13 @@ nav{
     background-color: transparent;
 }
 .drawer-container{
-    min-width: 300px;
-    height: 100%;
+    min-width: 280px;
+    height: auto;
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin-left: auto;
-
+    
     .close-btn{
         width: 30px;
         height: 30px;
@@ -240,6 +236,218 @@ nav{
             background-color: $color-bg-sec;
             color: $color-font;
             transform: scale(1.1);
+        }
+    }
+}
+
+// -------------------------------------------this is menu container 
+
+.menu-drawer{
+    min-height: 100vh;
+    .top-container{
+        background-color: $color-font;
+        padding: 20px 10px;
+        .menu-container{
+            order: 2;
+            flex: 1;
+            text-align: right;
+            .menu{
+                display: inline-block;
+                cursor: pointer;
+                .menu-bar{
+                    background-color: $color-bg;
+                }
+            }
+        }
+
+        .logo{
+            margin-top: 20px;
+            @media (max-width: $medium) {
+                text-align: center;
+            }
+
+            a{
+                font-size: $h1;
+                font-family: $logo-font;
+                color: $color-bg;
+            }
+        }
+    }
+
+    .bottom-container{
+        .link-container{
+            ul{
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                li{
+                    margin: 10px 0;
+                    
+
+                    a{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $color-font-sec;
+                        color: $color-bg;
+                        padding: 10px 0;
+                        width: 100%;
+                        border-right: 0;
+                        &.active{
+                            color: $color-bg;
+                            background-color: $color-font;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// -------------------------------------------this is menu container 
+
+.cart-drawer{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    .top-container{
+        flex: 1;
+    }
+    .bottom-container{
+        flex: 4;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;
+        .singel-cart{
+            display: flex;
+            padding: 20px 10px;
+            border-bottom: 1px solid rgba($color-font-sec, $alpha: 1.0);
+            transition: $transition;
+
+            &:hover{
+                background-color: rgba($color-font-sec, $alpha: 0.1);
+            }
+            .img-container{
+                flex: 1;
+                img{
+                    display: block;
+                    width: 100%;
+                }
+            }
+            .item-content{
+                flex: 2;
+                padding-left: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                h4{
+                    font-size: 16px;
+                    font-weight: bold;
+                    letter-spacing: 0;
+                }
+
+                .price{
+                    display: block;
+                    margin: 5px 0;
+                    font-size: 18px;
+                    color: $color-font-sec;
+                }
+
+                .delete-btn{
+                    max-width: 22px;
+                    font-size: 22px;
+                    transition: $transition;
+                    cursor: pointer;
+                    &:hover{
+                        color: $color-hover;
+                    }
+                }
+
+                .counter-container{
+                    max-width: 150px;
+                    margin-bottom: 10px;
+                    .counter{
+                        border: 2px solid $color-font;
+                        border-radius: 30px;
+                        display: flex;
+                        padding: 10px;
+            
+                        span{
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                            font-size: 12px;
+                            cursor: pointer;
+                        }
+            
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+            
+                        input{
+                            flex: 2;
+                            display: block;
+                            font-size: 16px;
+                            width: 100%;
+                            text-align: center;
+                            border: none;
+                            -moz-appearance: textfield;
+                            background-color: transparent;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            &:focus{
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sub-total-container{
+        flex: 2;
+        background-color: yellow;
+    }
+}
+
+
+
+//menu global nav
+
+.menu-container{
+    display: none;
+    @media (max-width: $medium) {
+        display: block;
+        flex: 1;
+    }
+
+    .menus{
+        display: flex;
+        flex-direction: column;
+        .menu-bar{
+            background: $color-font;
+            width: 30px;
+            height: 3px;
+            margin: 3px 0;
+            transition: all 0.3s ease-in-out;
+
+            &:nth-child(2){
+                width: 20px;
+            }
+        }
+        &.active .menu-bar:first-child{
+            transform: rotate(-45deg) translate(-9px, 4px);
+        }
+        &.active .menu-bar:nth-child(2){
+            opacity: 0;
+        }
+        &.active .menu-bar:last-child{
+            transform: rotate(45deg) translate(-8px, -5px);
         }
     }
 }

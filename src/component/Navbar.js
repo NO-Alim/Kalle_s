@@ -1,12 +1,12 @@
 import React, { useState,useEffect,useRef } from 'react'
 import {Link,NavLink, useHistory} from 'react-router-dom'
-import {FaSearch,FaUser,FaRegHeart,FaShoppingCart,FaPhone} from 'react-icons/fa'
-import {FiMail} from 'react-icons/fi'
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
-import {FiChevronsRight} from 'react-icons/fi'
-import {RiArrowDropDownLine} from 'react-icons/ri'
+import {FiChevronsRight,FiMail} from 'react-icons/fi'
+import {RiArrowDropDownLine,RiArrowRightSLine,RiDeleteBin6Line} from 'react-icons/ri'
+import {FaSearch,FaUser,FaRegHeart,FaShoppingCart,FaPhone,FaTimes,FaPlus,FaMinus,FaArrowRight,FaFacebookF,FaTwitter,FaEnvelope,FaFacebookMessenger,FaPinterestP,FaGoogle,FaStar,FaStarHalf,FaHeart} from 'react-icons/fa'
 import './scss/Navbar.scss'
+import { useGlobalContext } from '../context';
 
 const useStyle = makeStyles({
     root: {
@@ -27,12 +27,16 @@ const Navbar = () => {
     const location = useHistory();
     const classes = useStyle();
 
-
+    const {handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading} = useGlobalContext();
     //useState
     const [menuDrawer, setMenuDrawer] = useState(false);
     const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
     const [searchDrawer, setSearchDrawer] = useState(false);
     const [userDrawer, setUserDrawer] = useState(false);
+
+    //form localStorage 
+    const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem('cartList')));
+
 
     //useRef 
     const menuRef = useRef(null);
@@ -103,6 +107,21 @@ const Navbar = () => {
         }
       })
 
+    //when modal open stop scrolling
+
+    useEffect(() => {
+        if (menuDrawer || cartDrawerOpen) {
+            document.body.style.overflow = 'hidden';
+        } else{
+            document.body.style.overflow = 'unset';
+        }
+    },[menuDrawer, cartDrawerOpen])
+    
+    useEffect(() => {
+        setCartList(JSON.parse(localStorage.getItem('cartList')));
+        console.log('hello');
+    },[cartLoading])
+
     return (
         <div>
             <nav>
@@ -130,7 +149,11 @@ const Navbar = () => {
                         <div className="bottom-nav-container">
                             <div className="menu-container">
                                 <div className="menu" onClick={() => toggleMenuDrawerOpen()} ref={menuBtnRef}>
-                                    menu
+                                    <div className={`menus ${menuDrawer ? 'active' : null}`}>
+                                        <div className="menu-bar"></div>
+                                        <div className="menu-bar"></div>
+                                        <div className="menu-bar"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="logo-container">
@@ -162,8 +185,30 @@ const Navbar = () => {
             <Drawer className={classes.list} palette="secondary" variant="persistent" open={menuDrawer} anchor="left" classes={{paper: classes.drawerPaper}}>
                 <div className="drawer-container menu-drawer bg-sec" ref={menuRef}>
                     <div className="top-container flex-sb">
-                        <button className="close-btn btn-white" onClick={() => setMenuDrawer(false)}><FiChevronsRight /></button>
-                        <h3 className="h3">Menu</h3>
+                        <div className="menu-container">
+                            {/* <button className="close-btn btn-white" onClick={() => setMenuDrawer(false)}><FiChevronsRight /></button> */}
+                            <div className="menu" onClick={() => setMenuDrawer(false)}>
+                                <div className={`menus ${menuDrawer ? 'active' : null}`}>
+                                    <div className="menu-bar"></div>
+                                    <div className="menu-bar"></div>
+                                    <div className="menu-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="logo">
+                            <Link to="/" onClick={() => setMenuDrawer(false)}>Kalles</Link>
+                        </div>
+                    </div>
+                    <div className="bottom-container">
+                        <div className="link-container">
+                            <ul>
+                                <li><NavLink exact to="/" onClick={() => setMenuDrawer(false)}>Home</NavLink></li>
+                                <li><NavLink exact to="/shop/all" onClick={() => setMenuDrawer(false)}>Shop</NavLink></li>
+                                <li><NavLink exact to="/product" onClick={() => setMenuDrawer(false)}>Product</NavLink></li>
+                                <li><NavLink exact to="/blogs" onClick={() => setMenuDrawer(false)}>Blog</NavLink></li>
+                                <li><NavLink exact to="/about" onClick={() => setMenuDrawer(false)}>About</NavLink></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </Drawer>
@@ -172,6 +217,37 @@ const Navbar = () => {
                     <div className="top-container flex-sb bg-font cl-bg pd-2">
                         <button className="close-btn btn-white" onClick={() => setCartDrawerOpen(false)}><FiChevronsRight /></button>
                         <h3 className="h3 tx-cp">Shopping Cart</h3>
+                    </div>
+                    <div className="bottom-container cart-Items-container">
+                        {!cartList && <h3>Your Cart is Empty.</h3>}
+                        {cartList ? cartList.length < 1 && <h3>Your Cart is Empty.</h3> : null}
+                        {cartList && cartList.map((item,ind) => {
+                            return(
+                                <div className="cart-items" key={ind}>
+                                    <div className="singel-cart">
+                                        <div className="img-container">
+                                            <img src={item.image} alt="" />
+                                        </div>
+                                        <div className="item-content">
+                                            <h4 className="h4">Item name</h4>
+                                            <span className="price">{item.price}</span>
+                                            <div className="counter-container">
+                                                <div className="counter">
+                                                    <span className="counter-btn" onClick={() => handleDecreaseCartItemStorage(item.id)}><FaMinus /></span>
+                                                    <input type="number" value={item.quantity} readOnly/>
+                                                    <span className="counter-btn" onClick={() => handleIncreaseCartItemStorage(item.id)}><FaPlus /></span>
+                                                </div>
+                                            </div>
+                                            <span className="delete-btn" onClick={() => deleteCartItem(item.id)}><RiDeleteBin6Line /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                        
+                    </div>
+                    <div className="sub-total-container">
+
                     </div>
                 </div>
             </Drawer>

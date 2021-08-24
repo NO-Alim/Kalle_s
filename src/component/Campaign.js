@@ -47,12 +47,27 @@ const Campaign = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid-item">
-                        <div className="img-container img-container-two" style={{backgroundImage: `url(${imgTwoActive})`}} onMouseOver={() => setImgTwoActive(img1)} onMouseOut={() => setImgTwoActive(img2)}>
-                            <span className="discount">-30%</span>
-                            <div className="img-content"  onClick={() => location.push(`/product/5`)}>
+                    <div className="grid-item grid-item-two campaign-grid-two">
+                        <div className="item-container">
+                            <div className="img-container trending-img-container" onMouseOver={() => setImgTwoActive(img1)} onMouseOut={() => setImgTwoActive(img2)}>
+                                <div className="img"  style={{backgroundImage: `url('${imgTwoActive}')`}}></div>
+                                <div className="img-content" onClick={() => location.push(`/product/${5}`)}>
+                                </div>
+                                <div className="small-btn">
+                                    <div className="btn-group">
+                                        <button className="btn-white" onClick={() => location.push(`/product/${5}`)}><BiShow /></button>
+                                        <button className="btn-white" onClick={() => toggleAddCartModal(5)}><FiShoppingCart /></button>
+                                    </div>
+                                </div>
+                                <div className="wishlist">
+                                    <span className="wish-btn" onClick={() => console.log('heart')} onClick={() => console.log('heart')}><FiHeart /></span>
+                                    <span className="wish-tag">Add to Wishlist</span>
+                                </div>
+                                <div className="item-content">
+                                <h5 className="name" onClick={() => location.push(`/product/${5}`)}>Item name</h5>
+                                <span className="price">$234</span>
+                                <span className="secondary-price">$198</span>
                             </div>
-
                             {distance < 0 ? <h2 className="h3 times-up">opps!!! Times Up</h2> : <div className="timers">
                                 <div className="timer day">
                                     <span className="number">{days}</span>
@@ -71,41 +86,6 @@ const Campaign = () => {
                                     <span className="text">sec</span>
                                 </div>
                             </div>}
-                            <div className="small-btn">
-                                <div className="btn-group">
-                                    <button className="btn-white" onClick={() => location.push(`/product/5`)}><BiShow /></button>
-                                    <button className="btn-white" onClickCapture={() => toggleAddCartModal(5)}><FiShoppingCart /></button>
-                                </div>
-                            </div>
-                            <div className="color-container">
-                                <div className="colors">
-                                    <div className="single-color">
-                                        <span className="color" style={{backgroundColor:'pink'}}></span>
-                                        <span className="color-name">pink</span>
-                                    </div>
-                                    <div className="single-color">
-                                        <span className="color" style={{backgroundColor:'black'}}></span>
-                                        <span className="color-name">Black</span>
-                                    </div>
-                                    <div className="single-color">
-                                        <span className="color" style={{backgroundColor:'Grey'}}></span>
-                                        <span className="color-name">Grey</span>
-                                    </div>
-                                    <div className="single-color">
-                                        <span className="color" style={{backgroundColor:'blue'}}></span>
-                                        <span className="color-name">Blue</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="wishlist">
-                                <span className="wish-btn"><FiHeart /></span>
-                                <span className="wish-tag">Add to Wishlist</span>
-                            </div>
-                            
-                            <div className="item-content">
-                                <h5 className="name">Item name</h5>
-                                <span className="price">$234</span>
-                                <span className="secondary-price">$198</span>
                             </div>
                         </div>
                     </div>
@@ -127,3 +107,5 @@ const Campaign = () => {
 }
 
 export default Campaign
+
+

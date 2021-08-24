@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context';
 import {FaTimes,FaPlus,FaMinus,FaArrowRight,FaFacebookF,FaTwitter,FaEnvelope,FaFacebookMessenger,FaPinterestP,FaGoogle,FaStar,FaStarHalf,FaHeart,FaRegHeart} from 'react-icons/fa'
@@ -11,8 +11,7 @@ import './scss/SingleProduct.scss'
 import Slider from 'react-slick'
 
 const SingleProduct = () => {
-    const [count, setCount] = useState(1);
-    const {products} = useGlobalContext();
+    const {products,count, setCount,handleDecrease,handleCart} = useGlobalContext();
     const {id} = useParams();
     const selectedProduct = (products.filter(item => item.id == id));
 
@@ -27,6 +26,10 @@ const SingleProduct = () => {
         fade: true,
     }
 
+
+    useEffect(() => {
+        setCount(1)
+    },[])
     return (
         <div>
             {selectedProduct.map((item,ind) => {
@@ -92,14 +95,14 @@ const SingleProduct = () => {
                                 <div className="btn-container">
                                     <div className="counter-container">
                                         <div className="counter">
-                                            <span className="counter-btn" onClick={() => setCount(count - 1)}><FaMinus /></span>
+                                            <span className="counter-btn" onClick={() => handleDecrease()}><FaMinus /></span>
                                             <input type="number" value={count} onChange={(e) => setCount(e.target.value)}/>
                                             <span className="counter-btn" onClick={() => setCount(count + 1)}><FaPlus /></span>
                                         </div>
                                     </div>
                                     <div className="add-like-btn">
                                         <div className="add-cart-container">
-                                            <button className="btn-black">Add To Cart</button>
+                                            <button className="btn-black" onClick={() => handleCart(item.id, count)}>Add To Cart</button>
                                         </div>
                                         <div className="add-wish-list">
                                             <button className="btn-white"><FaRegHeart /></button>
@@ -141,7 +144,7 @@ const SingleProduct = () => {
                         </div>
                         <div className="bottom-container section-container">
                             <div className="tabs">
-                                <Tabs fill>
+                                <Tabs>
                                     <TabList>
                                         <Tab>Information</Tab>
                                         <Tab>Terms</Tab>
@@ -150,14 +153,16 @@ const SingleProduct = () => {
                                     </TabList>
                                     <TabPanel>
                                         <table>
-                                            <tr>
-                                                <td>Color</td>
-                                                <td>Grey, red, yellow</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Size</td>
-                                                <td>S,M,L</td>
-                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Color</td>
+                                                    <td>Grey, red, yellow</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Size</td>
+                                                    <td>S,M,L</td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </TabPanel>
                                     <TabPanel className="warranty">

@@ -62,7 +62,7 @@ const Blog = () => {
     return (
         <div className="section-container">
             <div className="Blog-container">
-                <h2 className="title">LATES FROM BLOG</h2>
+                <h2 className="title">LATES BLOG</h2>
                 <h4 className="sub-title">The freshest and most exciting news.</h4>
 
                 <div className="slick-carousel">

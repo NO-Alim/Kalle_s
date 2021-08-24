@@ -9,18 +9,17 @@ import { useHistory } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 const AddCartModal = () => {
-    const {toggleAddCartModal,addCartModal,addCartId,products} = useGlobalContext();
-    const [count, setCount] = useState(1);
+    const {toggleAddCartModal,addCartModal,addCartId,products,count, setCount,handleDecrease,handleCart} = useGlobalContext();
     const location = useHistory();
-
     const selectedProduct = (products.filter(item => item.id === addCartId))
-
+    
     useEffect(() => {
         if (addCartModal) {
             document.body.style.overflow = 'hidden';
         } else{
             document.body.style.overflow = 'unset';
         }
+        setCount(1)
     },[addCartModal])
 
     return (
@@ -73,14 +72,14 @@ const AddCartModal = () => {
                                 </div>
                                 <div className="counter-container">
                                     <div className="counter">
-                                        <span className="counter-btn" onClick={() => setCount(count - 1)}><FaMinus /></span>
+                                        <span className="counter-btn" onClick={() => handleDecrease()}><FaMinus /></span>
                                         <input type="number" value={count} onChange={(e) => setCount(e.target.value)}/>
                                         <span className="counter-btn" onClick={() => setCount(count + 1)}><FaPlus /></span>
                                     </div>
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button className="btn-black">Add To Cart</button>
+                                <button className="btn-black" onClick={() => handleCart(addCartId,count)}>Add To Cart</button>
                                 <span onClick={() => {location.push(`/product/${addCartId}`);toggleAddCartModal()}}>View full details <i><FaArrowRight /></i></span>
                             </div>
                         </div>

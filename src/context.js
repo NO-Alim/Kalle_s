@@ -11,6 +11,9 @@ const AppProvider = ({children}) => {
     const [searchText, setSearchText] = useState('');
     const [addCartModal, setAddCartModal] = useState(false);
     const [addCartId, setAddCartId] = useState(null);
+    const [count, setCount] = useState(1);
+    const [cartList, setCartList] = useState([])
+    const [cartLoading, setCartLoading] = useState(false);
 
     const fetchProduct = useCallback(async () => {
         setLoading(true);
@@ -31,11 +34,115 @@ const AppProvider = ({children}) => {
         setAddCartId(id);
     }
 
+    //handle Decrement count
+    const handleDecrease = () =>{
+        if (count > 1) {
+            setCount(count - 1)
+        }
+    }
+
+    //handle cart localStorage 
+    //for concat / append in cartList (it's global you can use this function anywhere for skipping duplicate inside localStorage)
+    //naem must be inside block quot 'example'
+    const appendToStorage = (name, data) => {
+        var prevItems = localStorage.getItem(name)
+        try{
+            prevItems = JSON.parse(prevItems);
+        } catch (e) {
+            prevItems = []
+        }
+        localStorage.setItem(name, JSON.stringify(prevItems.concat(data)))
+    }
+
+
+    const handleCart =  (id,itemTotal) => {
+        const localList = JSON.parse(localStorage.getItem('cartList'));
+        var ClickedItem = products.find((item) => item.id === id);
+
+        const ThisProduct = ({
+            name: ClickedItem.name,
+            id: ClickedItem.id,
+            price: ClickedItem.price,
+            priceTwo: null,
+            quantity: itemTotal,
+            image: ClickedItem.image
+        })
+
+        //if there is no item 
+
+        if (localStorage.getItem('cartList') === null) {
+            localStorage.setItem('cartList', JSON.stringify(cartList))
+        }
+
+        //
+        if (!localList) {
+            appendToStorage('cartList', ThisProduct);
+        } else if (localList.some((item) => item.id === ThisProduct.id)) {
+            var AllItem = JSON.parse(localStorage.cartList);
+
+            for (let i = 0; i < AllItem.length; i++) {
+                if (ThisProduct.id === AllItem[i].id) {
+                    AllItem[i].quantity += ThisProduct.quantity;
+                    break;
+                }
+            }
+            localStorage.setItem('cartList', JSON.stringify(AllItem))
+        } else{
+            //when item is add first time
+            appendToStorage('cartList', ThisProduct)
+        }
+        setCartLoading(!cartLoading);
+    }
+
+    //handle cart item increase & decrease inside localStorage
+
+    const handleIncreaseCartItemStorage = (id) => {
+        var AllItem = JSON.parse(localStorage.cartList);
+        for (let i = 0; i < AllItem.length; i++) {
+            if (id === AllItem[i].id) {
+                AllItem[i].quantity += 1;
+                break
+            }
+        }
+        localStorage.setItem('cartList', JSON.stringify(AllItem));
+        setCartLoading(!cartLoading);
+    }
+
+
+    const handleDecreaseCartItemStorage = (id) => {
+        var AllItem = JSON.parse(localStorage.cartList);
+        for (let i = 0; i < AllItem.length; i++) {
+            if (id === AllItem[i].id) {
+                if (AllItem[i].quantity > 1) {
+                    AllItem[i].quantity -= 1;
+                }
+                break;
+            }
+        }
+        localStorage.setItem('cartList', JSON.stringify(AllItem));
+        setCartLoading(!cartLoading);
+    }
+
+    //Delete item form cart 
+    const deleteCartItem = (id) =>{
+        const AllItem = JSON.parse(localStorage.getItem('cartList'));
+        for (let i = 0; i < AllItem.length; i++) {
+            if (AllItem[i].id === id) {
+                AllItem.splice(i, 1);
+                break;
+            }
+        }
+        localStorage.setItem('cartList', JSON.stringify(AllItem));
+        setCartLoading(!cartLoading);
+    }
+
+
 
     useEffect(() => {
         fetchProduct();
     },[searchText])
-    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal,addCartId}}>{children}</AppContext.Provider>
+
+    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal,addCartId,count, setCount,handleDecrease,handleCart,handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading, setCartLoading}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {
