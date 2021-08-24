@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {FaFilter} from 'react-icons/fa'
+import {FaFilter,FaHeart,FaRegHeart} from 'react-icons/fa'
 import {RiArrowDropDownLine,RiArrowDropUpLine} from 'react-icons/ri'
 import {FiHeart,FiShoppingCart} from 'react-icons/fi'
 import {BiShow} from 'react-icons/bi'
@@ -43,13 +43,14 @@ const customStyle = {
     }) 
 }
 const ProductList = () => {
-    const {products, loading, setLoading,toggleAddCartModal} = useGlobalContext();
+    const {products, loading, setLoading,toggleAddCartModal,handleWishList,cartLoading} = useGlobalContext();
     const [grid, setGrid] = useState(5);
     const width = useWindowWidth();
     const [itemList, setItemList] = useState(products);
     const [selectedOption, setSelectedOption] = useState(null);
     const [localLoading, setLocalLoading] = useState(true);
     const location = useHistory();
+    const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
 
     const {id} = useParams();
     const handleChange = (e) => {
@@ -119,6 +120,10 @@ const ProductList = () => {
             setLocalLoading(false);
         },200);
     },[selectedOption]);
+
+    useEffect(() => {
+        setWishList(JSON.parse(localStorage.getItem('wishList')));
+    },[cartLoading])
 
     if (loading) {
         return(
@@ -206,8 +211,8 @@ const ProductList = () => {
                                                 </div>
                                             </div>
                                             <div className="wishlist">
-                                                <span className="wish-btn"><FiHeart /></span>
-                                                <span className="wish-tag">Add to Wishlist</span>
+                                            <span className="wish-btn" onClick={() => handleWishList(item.id)}>{wishList && wishList.includes(item.id) ? <i style={{color: 'red'}}><FaHeart /> </i>: <i><FaRegHeart /></i>}</span>
+                                                <span className="wish-tag">{wishList && wishList.includes(item.id) ? ' Remove': ' add wishlist'}</span>
                                             </div>
                                         </div>
                                         <div className="item-content">

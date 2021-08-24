@@ -14,6 +14,8 @@ const AppProvider = ({children}) => {
     const [count, setCount] = useState(1);
     const [cartList, setCartList] = useState([])
     const [cartLoading, setCartLoading] = useState(false);
+    const [wishListId, setWishListId] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const fetchProduct = useCallback(async () => {
         setLoading(true);
@@ -42,8 +44,8 @@ const AppProvider = ({children}) => {
     }
 
     //handle cart localStorage 
-    //for concat / append in cartList (it's global you can use this function anywhere for skipping duplicate inside localStorage)
-    //naem must be inside block quot 'example'
+    //for concat / append in cartList (it's global you can use this function anywhere inside localStorage handler)
+    //name must be inside block quot 'example'
     const appendToStorage = (name, data) => {
         var prevItems = localStorage.getItem(name)
         try{
@@ -137,12 +139,41 @@ const AppProvider = ({children}) => {
     }
 
 
+    //handle wishList 
+
+    const handleWishList = (id) => {
+        const localList = JSON.parse(localStorage.getItem('wishList'));
+        if (localStorage.getItem('wishList') === null) {
+            localStorage.setItem('wishList', JSON.stringify(wishListId))
+            appendToStorage('wishList', id)
+        } else if (localList.find(item => item === id)) {
+            const newList = localList.filter((item) => {
+                return item !== id
+            });
+            localStorage.setItem('wishList', JSON.stringify(newList));
+        } else{
+            appendToStorage('wishList', id)
+        }
+        setCartLoading(!cartLoading)
+    }
+
+
+    useEffect(() => {
+        const AllItem = JSON.parse(localStorage.getItem('cartList'));
+        if (AllItem && AllItem.length > 0) {
+            const GetTotalPrice = AllItem.map(item => item.price * item.quantity).reduce((prev,next) => prev + next);
+            setTotalPrice(GetTotalPrice);
+        } else{
+            setTotalPrice(0)
+        }
+    },[cartLoading])
+
 
     useEffect(() => {
         fetchProduct();
     },[searchText])
 
-    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal,addCartId,count, setCount,handleDecrease,handleCart,handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading, setCartLoading}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{loading,products,setLoading,setProducts,addCartModal,setAddCartModal,toggleAddCartModal,addCartId,count, setCount,handleDecrease,handleCart,handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading, setCartLoading,handleWishList,totalPrice}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

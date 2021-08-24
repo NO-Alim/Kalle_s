@@ -1,5 +1,6 @@
 import React from 'react'
 import {FiHeart,FiShoppingCart} from 'react-icons/fi'
+import {FaRegHeart, FaHeart} from 'react-icons/fa'
 import {BiShow} from 'react-icons/bi'
 import './scss/Campaign.scss'
 import { useEffect } from 'react'
@@ -11,7 +12,8 @@ const img1 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-12_3
 const img2 = 'https://cdn.shopify.com/s/files/1/0332/6420/5963/products/p24-11_1080x.jpg?v=1581557817'
 const Campaign = () => {
     const [imgTwoActive, setImgTwoActive] = useState(img2)
-    const {toggleAddCartModal} = useGlobalContext();
+    const {toggleAddCartModal,handleWishList,cartLoading} = useGlobalContext();
+    const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
     const today = new Date().getTime();
     const launchDate = new Date('dec 31, 2021 13:00:00').getTime();
     const [distance, setDistance] = useState(launchDate - today);
@@ -34,6 +36,12 @@ const Campaign = () => {
         },1000);
         return () => clearInterval(interval);
     },[sec,distance])
+
+
+    useEffect(() => {
+        setWishList(JSON.parse(localStorage.getItem('wishList')));
+    },[cartLoading])
+
     return (
         <div className="section-container">
             <div className="campaign">
@@ -60,8 +68,8 @@ const Campaign = () => {
                                     </div>
                                 </div>
                                 <div className="wishlist">
-                                    <span className="wish-btn" onClick={() => console.log('heart')} onClick={() => console.log('heart')}><FiHeart /></span>
-                                    <span className="wish-tag">Add to Wishlist</span>
+                                    <span className="wish-btn" onClick={() => handleWishList(5)}>{wishList && wishList.includes(5) ? <i style={{color: 'red'}}><FaHeart /> </i>: <i><FaRegHeart /></i>}</span>
+                                    <span className="wish-tag">{wishList && wishList.includes(5) ? 'Remove to wishlist': 'add to wishlist'}</span>
                                 </div>
                                 <div className="item-content">
                                 <h5 className="name" onClick={() => location.push(`/product/${5}`)}>Item name</h5>

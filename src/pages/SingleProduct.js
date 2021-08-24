@@ -11,7 +11,9 @@ import './scss/SingleProduct.scss'
 import Slider from 'react-slick'
 
 const SingleProduct = () => {
-    const {products,count, setCount,handleDecrease,handleCart} = useGlobalContext();
+    const {products,count, setCount,handleDecrease,handleCart,handleWishList,cartLoading} = useGlobalContext();
+    const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
+
     const {id} = useParams();
     const selectedProduct = (products.filter(item => item.id == id));
 
@@ -25,6 +27,10 @@ const SingleProduct = () => {
         arrows: false,
         fade: true,
     }
+
+    useEffect(() => {
+        setWishList(JSON.parse(localStorage.getItem('wishList')));
+    },[cartLoading])
 
 
     useEffect(() => {
@@ -105,7 +111,7 @@ const SingleProduct = () => {
                                             <button className="btn-black" onClick={() => handleCart(item.id, count)}>Add To Cart</button>
                                         </div>
                                         <div className="add-wish-list">
-                                            <button className="btn-white"><FaRegHeart /></button>
+                                            <button className="btn-white" onClick={() => handleWishList(item.id)}>{wishList && wishList.includes(item.id) ? <i style={{color: 'red'}}><FaHeart /> </i>: <i><FaRegHeart /></i>}</button>
                                         </div>
                                     </div>
                                 </div>

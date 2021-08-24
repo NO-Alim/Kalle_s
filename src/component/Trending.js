@@ -1,13 +1,15 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import Slider from 'react-slick'
 import { useGlobalContext } from '../context';
 import {FiHeart,FiShoppingCart} from 'react-icons/fi'
+import {FaHeart,FaRegHeart} from 'react-icons/fa'
 import {BiShow} from 'react-icons/bi'
 import './scss/Trending.scss'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Trending = () => {
-    const {products,loading,toggleAddCartModal} = useGlobalContext();
+    const {products,loading,toggleAddCartModal,handleWishList,cartLoading} = useGlobalContext();
+    const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
     const location = useHistory();
     const SampleNextArrow = (props) =>{
         const {className, style , onClick} = props;
@@ -17,6 +19,10 @@ const Trending = () => {
             onClick={onClick} />
         );
     }
+
+    useEffect(() => {
+        setWishList(JSON.parse(localStorage.getItem('wishList')));
+    },[cartLoading])
 
     const SamplePrevArrow = (props) => {
         const { className, style, onClick} = props;
@@ -113,8 +119,8 @@ const Trending = () => {
                                                     </div>
                                                 </div>
                                                 <div className="wishlist">
-                                                    <span className="wish-btn" onClick={() => console.log('heart')} onClick={() => console.log('heart')}><FiHeart /></span>
-                                                    <span className="wish-tag">Add to Wishlist</span>
+                                                    <span className="wish-btn" onClick={() => handleWishList(item.id)}>{wishList && wishList.includes(item.id) ? <i style={{color: 'red'}}><FaHeart /> </i>: <i><FaRegHeart /></i>}</span>
+                                                    <span className="wish-tag">{wishList && wishList.includes(5) ? 'Remove to wishlist': 'add to wishlist'}</span>
                                                 </div>
                                             </div>
                                             <div className="item-content">

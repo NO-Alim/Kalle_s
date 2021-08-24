@@ -220,12 +220,17 @@ nav{
     background-color: transparent;
 }
 .drawer-container{
-    min-width: 280px;
+    min-width: 400px;
     height: auto;
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin-left: auto;
+
+    @media (max-width: $small) {
+        min-width: 280px;
+        max-width: 300px;
+    }
     
     .close-btn{
         width: 30px;
@@ -320,6 +325,14 @@ nav{
         overflow-y: scroll;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;
+
+        h3{
+            font-weight: 400;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .singel-cart{
             display: flex;
             padding: 20px 10px;
@@ -334,6 +347,7 @@ nav{
                 img{
                     display: block;
                     width: 100%;
+                    max-height: 150px;
                 }
             }
             .item-content{
@@ -377,6 +391,7 @@ nav{
                         span{
                             flex: 1;
                             display: flex;
+                            align-items: center;
                             justify-content: center;
                             font-size: 12px;
                             cursor: pointer;
@@ -411,7 +426,33 @@ nav{
     }
     .sub-total-container{
         flex: 2;
-        background-color: yellow;
+        padding: 10px;
+
+        .subtotal{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            h4{
+                font-weight: 400;
+            }
+        }
+
+        .btn-container{
+            button{
+                width: 220px;
+                height: 40px;
+                margin: 20px auto;
+                border-radius: 30px;
+
+                &:hover{
+                    background-color: $color-hover;
+                    border-color: $color-hover;
+                    color: $color-bg;
+                }
+            }
+        }
     }
 }
 

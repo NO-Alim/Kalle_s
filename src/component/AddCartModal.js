@@ -79,7 +79,7 @@ const AddCartModal = () => {
                                 </div>
                             </div>
                             <div className="button-container">
-                                <button className="btn-black" onClick={() => handleCart(addCartId,count)}>Add To Cart</button>
+                                <button className="btn-black" onClick={() => {handleCart(addCartId,count);toggleAddCartModal()}}>Add To Cart</button>
                                 <span onClick={() => {location.push(`/product/${addCartId}`);toggleAddCartModal()}}>View full details <i><FaArrowRight /></i></span>
                             </div>
                         </div>

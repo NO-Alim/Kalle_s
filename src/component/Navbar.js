@@ -27,7 +27,7 @@ const Navbar = () => {
     const location = useHistory();
     const classes = useStyle();
 
-    const {handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading} = useGlobalContext();
+    const {handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading,totalPrice} = useGlobalContext();
     //useState
     const [menuDrawer, setMenuDrawer] = useState(false);
     const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
@@ -36,6 +36,7 @@ const Navbar = () => {
 
     //form localStorage 
     const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem('cartList')));
+    const [wishList , setWishList] = useState(JSON.parse(localStorage.getItem('wishList')))
 
 
     //useRef 
@@ -119,7 +120,7 @@ const Navbar = () => {
     
     useEffect(() => {
         setCartList(JSON.parse(localStorage.getItem('cartList')));
-        console.log('hello');
+        setWishList(JSON.parse(localStorage.getItem('wishList')));
     },[cartLoading])
 
     return (
@@ -174,8 +175,8 @@ const Navbar = () => {
                                 <ul>
                                     <li><button onClick={() => toggleSearchDrawer()} ref={searchBtnRef}><FaSearch /></button></li>
                                     <li className="user" onClick={() => toggleUserDrawer()} ref={userBtnRef}><button><FaUser /></button></li>
-                                    <li className="like"><button onClick={() => location.push('/wishlist')}><FaRegHeart /> <span>0</span></button></li>
-                                    <li><button onClick={() => togglecartDrawerOpen()} ref={cartBtnRef}><FaShoppingCart /> <span>0</span></button></li>
+                                    <li className="like"><button onClick={() => location.push('/wishlist')}><FaRegHeart /> <span>{wishList && wishList.length > 0 ? wishList.length : '0'}</span></button></li>
+                                    <li><button onClick={() => togglecartDrawerOpen()} ref={cartBtnRef}><FaShoppingCart /> <span>{cartList && cartList.length > 0 ? cartList.length : '0'}</span></button></li>
                                 </ul>
                             </div>
                         </div>
@@ -219,8 +220,8 @@ const Navbar = () => {
                         <h3 className="h3 tx-cp">Shopping Cart</h3>
                     </div>
                     <div className="bottom-container cart-Items-container">
-                        {!cartList && <h3>Your Cart is Empty.</h3>}
-                        {cartList ? cartList.length < 1 && <h3>Your Cart is Empty.</h3> : null}
+                        {!cartList && <h3 className="h3">Your Cart is Empty.</h3>}
+                        {cartList ? cartList.length < 1 && <h3 className="h3">Your Cart is Empty.</h3> : null}
                         {cartList && cartList.map((item,ind) => {
                             return(
                                 <div className="cart-items" key={ind}>
@@ -230,7 +231,7 @@ const Navbar = () => {
                                         </div>
                                         <div className="item-content">
                                             <h4 className="h4">Item name</h4>
-                                            <span className="price">{item.price}</span>
+                                            <span className="price">$ {item.price}</span>
                                             <div className="counter-container">
                                                 <div className="counter">
                                                     <span className="counter-btn" onClick={() => handleDecreaseCartItemStorage(item.id)}><FaMinus /></span>
@@ -247,7 +248,14 @@ const Navbar = () => {
                         
                     </div>
                     <div className="sub-total-container">
-
+                        <div className="subtotal">
+                            <h4 className="h4">SubTotal :</h4>
+                            <h4 className="h4">$ {totalPrice.toFixed(2)}</h4>
+                        </div>
+                        <div className="btn-container">
+                            <button className="btn-white">View Full Cart</button>
+                            <button className="btn-black">Check Out</button>
+                        </div>
                     </div>
                 </div>
             </Drawer>
