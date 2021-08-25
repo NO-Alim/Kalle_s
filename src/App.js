@@ -10,6 +10,7 @@ import Footer from "./component/Footer";
 import ScrollToTop from "./ScrollToTop";
 import AddCartModal from "./component/AddCartModal";
 import SingleProduct from "./pages/SingleProduct";
+import FullCart from "./pages/FullCart";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route exact path="/product/:id">
           <SingleProduct />
+        </Route>
+        <Route exact path="/fullCart">
+          <FullCart />
         </Route>
         <Footer />
       </Router>

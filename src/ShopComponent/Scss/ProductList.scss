@@ -38,6 +38,7 @@ $button-font: 'Roboto Condensed', sans-serif;
 
         .filter-sec{
             .filter-btn{
+                display: none;
                 color: $color-font-sec;
                 cursor: pointer;
                 transition: $transition;

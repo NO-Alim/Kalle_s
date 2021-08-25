@@ -134,7 +134,7 @@ const Navbar = () => {
                                 <span><FiMail />&nbsp; noreplay@domain.com</span>
                             </div>
                             <div className="middle">
-                                <span>Summer sale discount off <span className="spacial">50</span>%! Shop Now</span>
+                                <span>Summer sale discount off <span className="spacial"> 50</span>%! Shop Now</span>
                             </div>
                             <div className="right">
                                 <div className="drop-container">
@@ -226,7 +226,7 @@ const Navbar = () => {
                             return(
                                 <div className="cart-items" key={ind}>
                                     <div className="singel-cart">
-                                        <div className="img-container">
+                                        <div className="img-container" onClick={() => {location.push(`/product/${item.id}`);setCartDrawerOpen(false)}}>
                                             <img src={item.image} alt="" />
                                         </div>
                                         <div className="item-content">
@@ -253,7 +253,7 @@ const Navbar = () => {
                             <h4 className="h4">$ {totalPrice.toFixed(2)}</h4>
                         </div>
                         <div className="btn-container">
-                            <button className="btn-white">View Full Cart</button>
+                            <button className="btn-white" onClick={() => {location.push('/fullCart'); setCartDrawerOpen(false)}}>View Full Cart</button>
                             <button className="btn-black">Check Out</button>
                         </div>
                     </div>

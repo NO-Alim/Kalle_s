@@ -175,9 +175,7 @@ const ProductList = () => {
                     <div className="sort">
                         <Select menuPlacement="auto" menuPosition="fixed" dropdownIndicator="none" className="custom-select" styles={customStyle} options={options} placeholder="sort"
                         value={selectedOption} onChange={(e) => handleChange(e)}/>
-                        {/* <div className="sort-btn-container">
-                            <p className="sort-btn">sort<span><RiArrowDropDownLine /></span></p>
-                        </div> */}
+                        
                     </div>
                 </div>
 
@@ -189,20 +187,7 @@ const ProductList = () => {
                                     <div className="item-container">
                                         <div className="img-container trending-img-container" style={{backgroundImage: `url('${item.image}')`}}>
                                             <div className="img-content" onClick={() => location.push(`/product/${item.id}`)}>
-                                                {/* <div className="wishlist">
-                                                    <span className="wish-btn"><FiHeart /></span>
-                                                    <span className="wish-tag">Add to Wishlist</span>
-                                                </div> */}
-                                                {/* <div className="btn-container">
-                                                    <div className="view-btns">
-                                                        <button className="btn-white">Quick View</button>
-                                                        <button className="btn-black"><BiShow /></button>
-                                                    </div>
-                                                    <div className="shop-btns">
-                                                        <button className="btn-white">Quick Shop</button>
-                                                        <button className="btn-black"><FiShoppingCart /></button>
-                                                    </div>
-                                                </div> */}
+                                                
                                             </div>
                                             <div className="small-btn">
                                                 <div className="btn-group">

@@ -344,6 +344,7 @@ nav{
             }
             .img-container{
                 flex: 1;
+                cursor: pointer;
                 img{
                     display: block;
                     width: 100%;
@@ -449,7 +450,7 @@ nav{
                 &:hover{
                     background-color: $color-hover;
                     border-color: $color-hover;
-                    color: $color-bg;
+                    color: $color-font
                 }
             }
         }
