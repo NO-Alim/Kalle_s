@@ -97,20 +97,7 @@ const Trending = () => {
                                             <div className="img-container trending-img-container">
                                                 <div className="img"  style={{backgroundImage: `url('${item.image}')`}}></div>
                                                 <div className="img-content" onClick={() => location.push(`/product/${item.id}`)}>
-                                                    {/* <div className="wishlist">
-                                                        <span className="wish-btn" onClick={() => console.log('heart')}><FiHeart /></span>
-                                                        <span className="wish-tag">Add to Wishlist</span>
-                                                    </div> */}
-                                                    {/* <div className="btn-container">
-                                                        <div className="view-btns">
-                                                            <button className="btn-white">Quick View</button>
-                                                            <button className="btn-black"><BiShow /></button>
-                                                        </div>
-                                                        <div className="shop-btns">
-                                                            <button className="btn-white" onClick={() => toggleAddCartModal(item.id)}>Quick Shop</button>
-                                                            <button className="btn-black" onClick={() => toggleAddCartModal(item.id)}><FiShoppingCart /></button>
-                                                        </div>
-                                                    </div> */}
+                                                    
                                                 </div>
                                                 <div className="small-btn">
                                                     <div className="btn-group">
@@ -120,7 +107,7 @@ const Trending = () => {
                                                 </div>
                                                 <div className="wishlist">
                                                     <span className="wish-btn" onClick={() => handleWishList(item.id)}>{wishList && wishList.includes(item.id) ? <i style={{color: 'red'}}><FaHeart /> </i>: <i><FaRegHeart /></i>}</span>
-                                                    <span className="wish-tag">{wishList && wishList.includes(5) ? 'Remove to wishlist': 'add to wishlist'}</span>
+                                                    <span className="wish-tag">{wishList && wishList.includes(item.id) ? 'Remove wishlist': 'add wishlist'}</span>
                                                 </div>
                                             </div>
                                             <div className="item-content">

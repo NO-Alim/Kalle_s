@@ -46,7 +46,7 @@ const Campaign = () => {
         <div className="section-container">
             <div className="campaign">
                 <div className="grid-container">
-                    <div className="grid-item">
+                    <div className="grid-item" onClick={() => location.push('/shop/all')}>
                         <div className="img-container" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/files/7492627-1-blue_1080x.jpg?v=1582026613')`}}>
                             <div className="content">
                                 <h5>VIEW COLLECTIONS</h5>
@@ -97,12 +97,12 @@ const Campaign = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid-item">
+                    <div className="grid-item" onClick={() => location.push('/shop/all')}>
                         <div className="img-container" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/files/13444047-1-greymarl_1080x.jpg?v=1582026960')`}}>
                             <div className="content-container">
                                 <h4 className="h4">MEN COLLECTION</h4>
                                 <h1 className="h1">SALE 70%</h1>
-                                <button className="btn-white">
+                                <button className="btn-white" onClick={() => location.push('/shop/all')}>
                                     Shop Now
                                 </button>
                             </div>
