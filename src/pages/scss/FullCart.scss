@@ -315,6 +315,11 @@ $font-base-lg: 18px;
             input{
                 max-width: 200px;
                 padding: 10px;
+
+
+                &:focus{
+                    outline: none;
+                }
             }
         }
 

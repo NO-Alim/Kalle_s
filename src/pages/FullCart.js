@@ -5,16 +5,34 @@ import {RiDeleteBin6Line} from 'react-icons/ri'
 import {FiGift} from 'react-icons/fi'
 import './scss/FullCart.scss'
 import { useHistory } from 'react-router-dom';
+import { useRef } from 'react';
 
 const FullCart = () => {
     const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem('cartList')));
+    const [checked, setChecked] = useState(false);
+    const warningRef = useRef(null);
     const {handleIncreaseCartItemStorage,handleDecreaseCartItemStorage,deleteCartItem,cartLoading,totalPrice} = useGlobalContext();
     
     const location = useHistory();
+
+
+    const handleCheckOut = () =>{
+        if (checked) {
+            location.push('/checkout');
+        } else{
+            warningRef.current.style.color = 'red'
+        }
+    }
     
     useEffect(() => {
         setCartList(JSON.parse(localStorage.getItem('cartList')));
     },[cartLoading])
+
+    useEffect(() => {
+        if (checked) {
+            warningRef.current.style.color = 'black'
+        }
+    },[checked])
 
 
     return (
@@ -35,7 +53,7 @@ const FullCart = () => {
                         </div>
                         {cartList.map((item,ind) => {
                             return(
-                                <div className="tbody">
+                                <div className="tbody" key={ind}>
                                     <div className="secondary-img-container" onClick={() => location.push(`/product/${item.id}`)}>
                                         <img src={item.image} alt="" />
                                     </div>
@@ -47,7 +65,7 @@ const FullCart = () => {
                                                 </div>
                                                 <div className="product-content">
                                                     <span className="name" onClick={() => location.push(`/product/${item.id}`)}>product name</span>
-                                                    <spna className="delete-btn" onClick={() => deleteCartItem(item.id)}><i><RiDeleteBin6Line /></i></spna>
+                                                    <span className="delete-btn" onClick={() => deleteCartItem(item.id)}><i><RiDeleteBin6Line /></i></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,10 +149,10 @@ const FullCart = () => {
                     </div>
                     <div className="btn-container">
                         <div className="checked">
-                            <input type="checkbox" />
-                            <label htmlFor="check">I agree with the terms and condition.</label>
+                            <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+                            <label htmlFor="check" ref={warningRef}>I agree with the terms and condition.</label>
                         </div>
-                        <button className="btn-black">CHECK OUT</button>
+                        <button className="btn-black" onClick={() => handleCheckOut()}>CHECK OUT</button>
                     </div>
                 </div>
             </div>
