@@ -221,12 +221,13 @@ nav{
 }
 .drawer-container{
     min-width: 400px;
+    min-height: 100vh;
     height: auto;
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin-left: auto;
-
+    overflow: hidden;
     @media (max-width: $small) {
         min-width: 280px;
         max-width: 300px;
@@ -441,6 +442,15 @@ nav{
         }
 
         .btn-container{
+            label{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input{
+                    margin-right: 10px;
+                }
+            }
             button{
                 width: 220px;
                 height: 40px;
@@ -454,6 +464,18 @@ nav{
                 }
             }
         }
+    }
+}
+
+
+
+//search drawer
+
+.search-drawer{
+    min-height: 100vh;
+
+    .bottom-container{
+        height: 100%;
     }
 }
 

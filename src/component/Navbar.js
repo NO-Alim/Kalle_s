@@ -7,6 +7,7 @@ import {RiArrowDropDownLine,RiArrowRightSLine,RiDeleteBin6Line} from 'react-icon
 import {FaSearch,FaUser,FaRegHeart,FaShoppingCart,FaPhone,FaTimes,FaPlus,FaMinus,FaArrowRight,FaFacebookF,FaTwitter,FaEnvelope,FaFacebookMessenger,FaPinterestP,FaGoogle,FaStar,FaStarHalf,FaHeart} from 'react-icons/fa'
 import './scss/Navbar.scss'
 import { useGlobalContext } from '../context';
+import NavbarSearch from './NavbarSearch';
 
 const useStyle = makeStyles({
     root: {
@@ -33,6 +34,7 @@ const Navbar = () => {
     const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
     const [searchDrawer, setSearchDrawer] = useState(false);
     const [userDrawer, setUserDrawer] = useState(false);
+    const [checked, setChecked] = useState(false);
 
     //form localStorage 
     const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem('cartList')));
@@ -48,6 +50,7 @@ const Navbar = () => {
     const searchBtnRef  = useRef(null);
     const userRef = useRef(null);
     const userBtnRef = useRef(null);
+    const warningRef = useRef(null);
 
     //indivisual function
 
@@ -95,8 +98,15 @@ const Navbar = () => {
                 setUserDrawer(false);
             }
         }
+    }
 
-
+    const handleCheckOut = () =>{
+        if (checked) {
+            location.push('/checkout');
+            setCartDrawerOpen(false)
+        } else{
+            warningRef.current.style.color = 'red'
+        }
     }
 
     //useEffect
@@ -122,6 +132,12 @@ const Navbar = () => {
         setCartList(JSON.parse(localStorage.getItem('cartList')));
         setWishList(JSON.parse(localStorage.getItem('wishList')));
     },[cartLoading])
+
+    useEffect(() => {
+        if (checked) {
+            warningRef.current.style.color = 'black'
+        }
+    },[checked])
 
     return (
         <div>
@@ -254,7 +270,8 @@ const Navbar = () => {
                         </div>
                         <div className="btn-container">
                             <button className="btn-white" onClick={() => {location.push('/fullCart'); setCartDrawerOpen(false)}}>View Full Cart</button>
-                            <button className="btn-black">Check Out</button>
+                            <label ref={warningRef}><input type="checkbox" onChange={() => setChecked(!checked)}/> I agree with the terms and condition.</label>
+                            <button className="btn-black" onClick={() => handleCheckOut()}>Check Out</button>
                         </div>
                     </div>
                 </div>
@@ -265,6 +282,10 @@ const Navbar = () => {
                         <button className="close-btn btn-white" onClick={() => setSearchDrawer(false)}><FiChevronsRight /></button>
                         <h3 className="h3 tx-cp">Search</h3>
                     </div>
+                    <div className="bottom-container">
+                        <NavbarSearch />
+                    </div>
+
                 </div>
             </Drawer>
             <Drawer className={classes.list} palette="secondary" variant="persistent" open={userDrawer} anchor="right" classes={{paper: classes.drawerPaper}}>

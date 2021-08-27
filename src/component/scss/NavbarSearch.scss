@@ -1,0 +1,122 @@
+$color-bg: #fff;
+$color-bg-sec: rgb(240, 240, 240);
+$color-font: #000;
+$color-font-sec: rgb(109, 109, 109);
+$color-hover: rgb(93, 217, 255);
+
+$padding-margin-ex-lg: 150px;
+$padding-margin-lg: 100px;
+$padding-margin-md: 70px;
+$padding-margin-sm: 50px;
+$padding-margin-ex-sm: 20px;
+
+$transition: all 0.3s ease-in-out;
+//query
+$large: 1100px;
+$ex-medium: 900px;
+$medium: 768px;
+$small: 550px;
+$extraSmall: 450px;
+
+$heading: 70px;
+$heading-sm: 50px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 20px;
+$font-base: 16px;
+$font-base-lg: 18px;
+
+.navbarSearch{
+    min-height: 100%;
+    background-color: $color-bg;
+    display: flex;
+    flex-direction: column;
+    
+    .from-container{
+        padding: 20px;
+
+        form{
+            border: 1px solid $color-font-sec;
+            max-width: 220px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 30px;
+            padding: 0 15px;
+
+            input{
+                flex: 1;
+                border: none;
+                padding: 10px;
+                display: block;
+                width: 100%;
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            button{
+                background-color: transparent;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                font-size: 20px;
+                cursor: pointer;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+    .result-container{
+        strong{
+            display: block;
+            text-align: left;
+            padding: 10px 0;
+            padding-left: 20px;
+            border-top: 1px solid rgba($color-font-sec, $alpha: 0.3);
+            border-bottom: 1px solid rgba($color-font-sec, $alpha: 0.3);
+        }
+
+
+        .search-result{
+            padding: 20px;
+
+            span{
+                font-size: 14px;
+                color: $color-font-sec;
+            }
+
+            .result{
+                max-height: 100%;
+                display: flex;
+                flex-direction: column;
+                overflow-y: scroll;
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;
+                .item{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+
+                    .img-container{
+                        flex: 1;
+
+                        img{
+                            max-width: 80px;
+                        }
+                    }
+                    .content{
+                        flex: 2;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}

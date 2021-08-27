@@ -132,19 +132,19 @@ const FullCart = () => {
                         </div>
                         <div className="div">
                             <span className="tag">Total</span>
-                            <span className="price">$123445</span>
+                            <span className="price">${totalPrice.toFixed(2)}</span>
                         </div>
                         <div className="div">
                             <span className="tag">5% OFF</span>
-                            <span className="price">-$345</span>
+                            <span className="price">-${((totalPrice / 100)*5).toFixed(2)}</span>
                         </div>
                         <div className="div">
                             <span className="tag">Taxes</span>
-                            <span className="price">+$2342</span>
+                            <span className="price">+${((totalPrice / 100)*15).toFixed(2)}</span>
                         </div>
                         <div className="div sub-total">
                             <span className="tag">Subtotal</span>
-                            <span className="price">$1345</span>
+                            <span className="price">${(((totalPrice - ((totalPrice / 100)*5)) + (totalPrice / 100)*15)).toFixed(2)}</span>
                         </div>
                     </div>
                     <div className="btn-container">
