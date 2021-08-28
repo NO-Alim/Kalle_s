@@ -27,3 +27,50 @@ $h3: 25px;
 $h4: 20px;
 $font-base: 16px;
 $font-base-lg: 18px;
+
+
+.wishList{
+    display: flex;
+    flex-direction: column;
+
+    .item{
+        padding: 20px 0;
+        margin: 20px 0;
+        border-top: 1px solid $color-bg-sec;
+        border-bottom: 1px solid $color-bg-sec;
+        .product-container{
+            display: flex;
+            align-items: center;
+            .img-container{
+                margin-right: 20px;
+                img{
+                    max-width: 100px;
+                }
+            }
+            .product-content{
+                display: flex;
+                flex-direction: column;
+
+                .name{
+                    font-size: 18px;
+                    transition: $transition;
+                    cursor: pointer;
+                    &:hover{
+                        color: $color-hover;
+                    }
+                }
+
+                .delete-btn{
+                    margin: 10px 0;
+                    font-size: 20px;
+                    transition: $transition;
+                    cursor: pointer;
+
+                    &:hover{
+                        color: $color-hover;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -28,14 +28,11 @@ $font-base: 16px;
 $font-base-lg: 18px;
 
 .navbarSearch{
-    min-height: 100%;
     background-color: $color-bg;
     display: flex;
     flex-direction: column;
-    
     .from-container{
         padding: 20px;
-
         form{
             border: 1px solid $color-font-sec;
             max-width: 220px;
@@ -72,6 +69,10 @@ $font-base-lg: 18px;
         }
     }
     .result-container{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        
         strong{
             display: block;
             text-align: left;
@@ -80,10 +81,10 @@ $font-base-lg: 18px;
             border-top: 1px solid rgba($color-font-sec, $alpha: 0.3);
             border-bottom: 1px solid rgba($color-font-sec, $alpha: 0.3);
         }
-
-
         .search-result{
             padding: 20px;
+            flex: 1;
+            
 
             span{
                 font-size: 14px;
@@ -91,12 +92,8 @@ $font-base-lg: 18px;
             }
 
             .result{
-                max-height: 100%;
                 display: flex;
                 flex-direction: column;
-                overflow-y: scroll;
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;
                 .item{
                     display: flex;
                     align-items: center;
@@ -108,12 +105,29 @@ $font-base-lg: 18px;
 
                         img{
                             max-width: 80px;
+                            cursor: pointer;
                         }
                     }
                     .content{
                         flex: 2;
                         display: flex;
                         flex-direction: column;
+                        margin-left: 10px;
+                        .name{
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                            transition: $transition;
+                            cursor: pointer;
+
+                            &:hover{
+                                color: $color-hover;
+                            }
+                        }
+
+                        .price{
+                            font-size: 18px;
+                            color: $color-font;
+                        }
                     }
                 }
             }

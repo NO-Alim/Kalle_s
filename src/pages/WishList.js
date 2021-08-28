@@ -18,31 +18,18 @@ const WishList = () => {
 
 
     return (
-        <div className="section-container">
+        <div className="section-container wishList">
             {wishProduct.map((item,ind)=>{
                 return(
                     <div className="item" key={ind}>
-                        <div className="tbody" key={ind}>
-                            <div className="secondary-img-container" onClick={() => location.push(`/product/${item.id}`)}>
+                        <div className="product-container">
+                            <div className="img-container" onClick={() => location.push(`/product/${item.id}`)}>
                                 <img src={item.image} alt="" />
                             </div>
-                            <div className="tr">
-                                <div className="th flex-2">
-                                    <div className="product-container">
-                                        <div className="img-container" onClick={() => location.push(`/product/${item.id}`)}>
-                                            <img src={item.image} alt="" />
-                                        </div>
-                                        <div className="product-content">
-                                            <span className="name" onClick={() => location.push(`/product/${item.id}`)}>{((item.title).replace(/^(.{50}[^\s]*).*/, "$1") + "\n")}</span>
-                                            <span className="delete-btn" onClick={() => handleWishList(item.id)}><i><RiDeleteBin6Line /></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="th">
-                                    <div className="price-container">
-                                        <span className="price">$ {item.price.toFixed(2)}</span>
-                                    </div>
-                                </div>
+                            <div className="product-content">
+                                <span className="name" onClick={() => location.push(`/product/${item.id}`)}>{((item.title).replace(/^(.{50}[^\s]*).*/, "$1") + "\n")}</span>
+                                <span className="delete-btn" onClick={() => handleWishList(item.id)}><i><RiDeleteBin6Line /></i></span>
+                                <span className="price">$ {item.price.toFixed(2)}</span>
                             </div>
                         </div>
                     </div>

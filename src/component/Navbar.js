@@ -8,6 +8,7 @@ import {FaSearch,FaUser,FaRegHeart,FaShoppingCart,FaPhone,FaTimes,FaPlus,FaMinus
 import './scss/Navbar.scss'
 import { useGlobalContext } from '../context';
 import NavbarSearch from './NavbarSearch';
+import User from './User';
 
 const useStyle = makeStyles({
     root: {
@@ -283,7 +284,7 @@ const Navbar = () => {
                         <h3 className="h3 tx-cp">Search</h3>
                     </div>
                     <div className="bottom-container">
-                        <NavbarSearch />
+                        <NavbarSearch setSearchDrawer={setSearchDrawer} />
                     </div>
 
                 </div>
@@ -293,6 +294,9 @@ const Navbar = () => {
                     <div className="top-container flex-sb bg-font cl-bg pd-2">
                         <button className="close-btn btn-white" onClick={() => setUserDrawer(false)}><FiChevronsRight /></button>
                         <h3 className="h3 tx-cp">User</h3>
+                    </div>
+                    <div className="bottom-container">
+                        <User />
                     </div>
                 </div>
             </Drawer>
