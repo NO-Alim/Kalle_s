@@ -12,6 +12,7 @@ import AddCartModal from "./component/AddCartModal";
 import SingleProduct from "./pages/SingleProduct";
 import FullCart from "./pages/FullCart";
 import CheckOut from "./pages/CheckOut";
+import SingleBlog from "./pages/SingleBlog";
 
 function App() {
   return (
@@ -25,9 +26,6 @@ function App() {
         </Route>
         <Route exact path="/shop/:id">
           <Shop />
-        </Route>
-        <Route exact path="/product">
-          <AllProduct />
         </Route>
         <Route exact path="/blogs">
           <Blogs />
@@ -46,6 +44,9 @@ function App() {
         </Route>
         <Route exact path="/checkout">
           <CheckOut />
+        </Route>
+        <Route exact path="/singleblog">
+          <SingleBlog />
         </Route>
         <Footer />
       </Router>

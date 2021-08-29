@@ -37,6 +37,15 @@ $font-base-lg: 18px;
         padding-bottom: 0;
     }
 
+    @media (max-width: $medium) {
+        grid-template-columns: 1fr;
+    }
+    @media (max-width: $small) {
+        &.section-container{
+            padding-bottom: 20px;
+        }
+    }
+
 
     .blog-container{
         .img-container{

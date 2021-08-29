@@ -151,7 +151,7 @@ const Navbar = () => {
                                 <span><FiMail />&nbsp; noreplay@domain.com</span>
                             </div>
                             <div className="middle">
-                                <span>Summer sale discount off <span className="spacial"> 50</span>%! Shop Now</span>
+                                <span>Summer sale discount off &nbsp; <span className="spacial"> 50</span>%! Shop Now</span>
                             </div>
                             <div className="right">
                                 <div className="drop-container">
@@ -183,7 +183,6 @@ const Navbar = () => {
                                 <ul>
                                     <li><NavLink exact to="/">Home</NavLink></li>
                                     <li><NavLink exact to="/shop/all">Shop</NavLink></li>
-                                    <li><NavLink exact to="/product">Product</NavLink></li>
                                     <li><NavLink exact to="/blogs">Blog</NavLink></li>
                                     <li><NavLink exact to="/about">About</NavLink></li>
                                 </ul>

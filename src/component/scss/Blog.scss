@@ -35,6 +35,12 @@ $font-base-lg: 18px;
         .slick-container{
             position: relative;
             overflow: hidden;
+            @media (max-width: $small) {
+                .slick-next,.slick-prev{
+                    opacity: 1;
+                    transform: translateY(-50%) scale(1);
+                }
+            }
             &:hover{
                 .slick-next,.slick-prev{
                     opacity: 1;

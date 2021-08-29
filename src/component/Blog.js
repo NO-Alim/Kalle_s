@@ -4,8 +4,10 @@ import {FiHeart,FiShoppingCart} from 'react-icons/fi'
 import {BiShow} from 'react-icons/bi'
 import './scss/Blog.scss'
 import './scss/Trending.scss'
+import { useHistory } from 'react-router-dom'
 
 const Blog = () => {
+    const location = useHistory();
     const SampleNextArrow = (props) =>{
         const {className, style , onClick} = props;
         return (
@@ -69,121 +71,121 @@ const Blog = () => {
                     <div className="slick-container">
                         <Slider {...settings}>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/1_540x.jpg?v=1581524880')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/street-style-girl3_540x.jpg?v=1586139309')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>The Easiest Way to Break Out on Top</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>The Easiest Way to Break Out on Top</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/couple_540x.jpg?v=1586139452')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>Style for couple in Weeding season</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>Style for couple in Weeding season</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/street-style-girl3_540x.jpg?v=1586139309')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/street-style-girl3_540x.jpg?v=1586139309')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/street-style-girl3_540x.jpg?v=1586139309')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/street-style-girl3_540x.jpg?v=1586139309')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/couple_540x.jpg?v=1586139452')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/couple_540x.jpg?v=1586139452`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>
                             </div>
                             <div className="slick-item">
-                                <div className="img-container">
+                                <div className="img-container" onClick={() => location.push('/singleblog')}>
                                     <div className="img" style={{backgroundImage: `url('https://cdn.shopify.com/s/files/1/0332/6420/5963/articles/couple_540x.jpg?v=1586139452')`}}>
 
                                     </div>
                                 </div>
                                 <div className="blog-content">
-                                    <strong>101 Beauty Tips Every Girl Should Know</strong>
+                                    <strong onClick={() => location.push('/singleblog')}>101 Beauty Tips Every Girl Should Know</strong>
                                     <p>By <span>admin</span> on <span>April 7, 2020</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et maxime beatae velit ducimus nulla quisquam. Accusamus maxime aut alias modi.</p>
                                 </div>

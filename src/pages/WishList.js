@@ -16,6 +16,11 @@ const WishList = () => {
         setWishList(JSON.parse(localStorage.getItem('wishList')))
     },[cartLoading]);
 
+    if (wishList && wishList.length < 1) {
+        return(
+            <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no Item in your wishList.</h3>
+        )
+    }
 
     return (
         <div className="section-container wishList">
