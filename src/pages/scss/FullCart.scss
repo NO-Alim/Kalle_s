@@ -56,7 +56,10 @@ $font-base-lg: 18px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    
+                    @media (max-width: $medium) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
                     .th{
                         text-align: right;
                         flex: 1;

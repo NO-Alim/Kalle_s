@@ -34,6 +34,17 @@ const FullCart = () => {
         }
     },[checked])
 
+    if (!cartList) {
+        return (
+            <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no item in your cart.</h3>
+        )
+    }
+
+    if (cartList && cartList.length < 1) {
+        return(
+            <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no item in your cart.</h3>
+        )
+    }
 
     return (
         <div>

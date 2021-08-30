@@ -8,15 +8,19 @@ import './scss/WishList.scss'
 const WishList = () => {
     const {products,cartLoading,handleWishList} = useGlobalContext();
     const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
+    const [wishProduct, setWishProduct] = useState([]);
     const location = useHistory();
 
-    const wishProduct = products.filter(item => wishList.includes(item.id));
-    console.log(wishProduct);
+    useEffect(() => {
+        if (wishList) {
+            setWishProduct(products.filter(item => wishList.includes(item.id)))
+        }
+    },[wishList,cartLoading])
     useEffect(() => {
         setWishList(JSON.parse(localStorage.getItem('wishList')))
     },[cartLoading]);
 
-    if (wishList && wishList.length < 1) {
+    if (wishProduct.length < 1) {
         return(
             <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no Item in your wishList.</h3>
         )

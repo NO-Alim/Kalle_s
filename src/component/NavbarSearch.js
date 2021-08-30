@@ -3,6 +3,7 @@ import {FiSearch} from 'react-icons/fi'
 import { useHistory } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import './scss/NavbarSearch.scss'
+import Headroom from 'react-headroom'
 
 const NavbarSearch = ({setSearchDrawer}) => {
     const {products,loading} = useGlobalContext();

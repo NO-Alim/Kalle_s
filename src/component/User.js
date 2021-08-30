@@ -9,7 +9,6 @@ const User = () => {
     const [recover, setRecover] = useState(false);
 
     useEffect(() => {
-        console.log('hello');
     },[login,create,recover])
 
     

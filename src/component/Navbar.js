@@ -9,6 +9,7 @@ import './scss/Navbar.scss'
 import { useGlobalContext } from '../context';
 import NavbarSearch from './NavbarSearch';
 import User from './User';
+import Headroom from 'react-headroom'
 
 const useStyle = makeStyles({
     root: {
@@ -142,6 +143,7 @@ const Navbar = () => {
 
     return (
         <div>
+            
             <nav>
                 <div className="nav-container">
                     <div className="top-nav">
@@ -163,6 +165,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
+                    <Headroom >
                     <div className="bottom-nav">
                         <div className="bottom-nav-container">
                             <div className="menu-container">
@@ -197,6 +200,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
+                    </Headroom>
                 </div>
             </nav>
             <Drawer className={classes.list} palette="secondary" variant="persistent" open={menuDrawer} anchor="left" classes={{paper: classes.drawerPaper}}>
@@ -270,8 +274,8 @@ const Navbar = () => {
                         </div>
                         <div className="btn-container">
                             <button className="btn-white" onClick={() => {location.push('/fullCart'); setCartDrawerOpen(false)}}>View Full Cart</button>
-                            <label ref={warningRef}><input type="checkbox" onChange={() => setChecked(!checked)}/> I agree with the terms and condition.</label>
-                            <button className="btn-black" onClick={() => handleCheckOut()}>Check Out</button>
+                            <label ref={warningRef}><input type="checkbox" checked={checked} onChange={() => setChecked(!checked)}/> I agree with the terms and condition.</label>
+                            <button className="btn-black" onClick={() => {handleCheckOut();setChecked(false)}}>Check Out</button>
                         </div>
                     </div>
                 </div>

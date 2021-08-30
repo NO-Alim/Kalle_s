@@ -79,6 +79,18 @@ const CheckOut = () => {
     const toggleModal = () => {
         setModal(!modal);
     }
+
+    if (!cartList) {
+        return (
+            <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no item to CheckOut.</h3>
+        )
+    }
+
+    if (cartList && cartList.length < 1) {
+        return(
+            <h3 className="h3 section-container" style={{fontWeight: '400',textAlign: 'center'}}>There is no item to CheckOut.</h3>
+        )
+    }
     return (
         <div className="checkout section-container">
             <div className="flex-container">
@@ -121,7 +133,7 @@ const CheckOut = () => {
                         </div>
                         <div className="btn-container">
                             <button className="btn-white" onClick={() => handleSubmit()}>Continue to Shipping</button>
-                            <button className="btn-black">Return to cart</button>
+                            <button className="btn-black" onClick={() => location.push('/fullCart')}>Return to cart</button>
                         </div>
                     </div>
                 </div>
