@@ -9,6 +9,7 @@ import './Scss/ProductList.scss'
 import { useEffect } from 'react'
 import Select from 'react-select'
 import { Link, useHistory, useParams } from 'react-router-dom'
+import Pagination from './Pagination'
 
 const options = [
     //{value: 'Selling', label: 'Featured'},
@@ -51,6 +52,11 @@ const ProductList = () => {
     const [localLoading, setLocalLoading] = useState(true);
     const location = useHistory();
     const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem('wishList')));
+
+    //for pagination 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPerPage] = useState(5);
+    //
 
     const {id} = useParams();
     const handleChange = (e) => {
@@ -125,6 +131,33 @@ const ProductList = () => {
         setWishList(JSON.parse(localStorage.getItem('wishList')));
     },[cartLoading])
 
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = itemList.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
+    useEffect(() => {
+        setCurrentPage(1);
+    },[loading,localLoading])
+
+    useEffect(() => {
+        if (grid === 5) {
+            setPostPerPage(10);
+            setCurrentPage(1)
+        }
+        if (grid === 4) {
+            setPostPerPage(8);
+            setCurrentPage(1)
+        }
+        if (grid === 3 || grid === 2 || grid === 1) {
+            setPostPerPage(6)
+            setCurrentPage(1)
+        }
+    },[grid])
+
     if (loading) {
         return(
             <div className="section-container">
@@ -181,7 +214,7 @@ const ProductList = () => {
 
                 <div className='products-container mr-top-bottom-5'>
                     {localLoading ? <h2>loading.....</h2> : <div className={`product-grid-container product-grid-container${grid}`} style={{gridTemplateColumns: `repeat(${grid}, 1fr)`}}>
-                        {itemList.map((item,ind) =>{
+                        {currentPosts.map((item,ind) =>{
                             return(
                                 <div className={`product-item product-item${ind}`} key={ind}>
                                     <div className="item-container">
@@ -234,6 +267,9 @@ const ProductList = () => {
                             )
                         })}
                     </div>}
+                </div>
+                <div className="pagination">
+                    <Pagination postPerPage={postPerPage} totalPosts={itemList.length} paginate={paginate} currentPage={currentPage}/>
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ShopHeader from '../ShopComponent/ShopHeader'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ShopNav from '../ShopComponent/ShopNav'
 import ProductList from '../ShopComponent/ProductList'
 import SingleProduct from './SingleProduct'
+import Pagination from '../ShopComponent/Pagination'
 
 const Shop = () => {
     return (

@@ -587,5 +587,32 @@ $button-font: 'Roboto Condensed', sans-serif;
 }
 
 
+.pagination{
+    text-align: center;
+    margin-top: 100px;
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        li{
+
+            &.active{
+                span{
+                    background-color: $color-font-sec;
+                    color: $color-bg;
+                }
+            }
+            span{
+                padding: 10px 20px;
+                margin: 0 10px;
+                background-color: $color-bg-sec;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
 
 //select 
