@@ -234,7 +234,7 @@ const ProductList = () => {
                                             </div>
                                         </div>
                                         <div className="item-content">
-                                            <h5 className="name">{((item.title).replace(/^(.{50}[^\s]*).*/, "$1") + "\n")}...</h5>
+                                            <h5 className="name">{((item.title).replace(/^(.{50}[^\s]*).*/, "$1") + '')}...</h5>
                                             <span className="description">{((item.description).replace(/^(.{200}[^\s]*).*/, "$1") + "\n")}...</span>
                                             <span className="price">${item.price}</span>
                                             <div className="color-container">

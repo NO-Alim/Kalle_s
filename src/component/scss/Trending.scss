@@ -42,6 +42,8 @@ $font-base-lg: 18px;
             }
         }
         .item-container{
+            border-radius: 10px;
+            overflow: hidden;
             &:hover{
                 .img-container{
                     .small-btn{
@@ -53,12 +55,8 @@ $font-base-lg: 18px;
                 }
             }
             .img-container{
-                // background-size: 90% 90%;
-                // background-repeat: no-repeat;
-                // background-position: center;
                 padding-top: 120%;
                 position: relative;
-
                 &:hover{
                     .small-btn{
                         transform: scale(1);
@@ -180,6 +178,10 @@ $font-base-lg: 18px;
 
             .item-content{
                 text-align: left;
+                min-height: 120px;
+                padding: 20px;
+                padding-top: 0;
+                background-color: rgba($color-font-sec, $alpha: 0.2);
                 .name{
                     font-size: 16px;
                     font-weight: 500;

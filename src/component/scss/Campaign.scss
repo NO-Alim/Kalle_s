@@ -43,6 +43,8 @@ $font-base-lg: 18px;
         }
 
         .grid-item{
+            border-radius: 10px;
+            overflow: hidden;
             .img-container{
                 position: relative;
                 min-height: 500px;
@@ -69,12 +71,6 @@ $font-base-lg: 18px;
 
                     .img-content{
                         display: block;
-                    }
-                    .timers{
-                        //transform: scale(0);
-                    }
-                    .times-up{
-                        //display: none;
                     }
                     &::after{
                         opacity: 1;
@@ -234,7 +230,7 @@ $font-base-lg: 18px;
                     right: 10px;
                     bottom: 100px;
                     display: block;
-                    transform: scale(1);
+                    transform: scale(0);
                     transition: $transition;
                     @media (max-width: $small) {
                         transform: scale(1);
@@ -367,6 +363,8 @@ $font-base-lg: 18px;
             }
         }
 
+        
+
         .wishlist{
             position: absolute;
             top: 0px;
@@ -429,6 +427,7 @@ $font-base-lg: 18px;
         text-align: center;
         display: flex;
         align-items: center;
+        background-color: transparent;
         .name{
             font-size: 16px;
             font-weight: 500;
@@ -436,6 +435,7 @@ $font-base-lg: 18px;
             line-height: 15px;
             margin-top: 15px;
             margin-bottom: 0;
+            font-weight: bold;
         }
 
         .price{
@@ -444,15 +444,16 @@ $font-base-lg: 18px;
             padding: 0;
             text-decoration: line-through;
             font-weight: 300;
-            color: $color-font-sec;
+            color: $color-font;
+            font-weight: bold;
         }
         .secondary-price{
             display: inline-block;
             font-size: 15px;
-            margin: 5px 0;
             padding: 0;
             font-weight: 300;
             color: red;
+            font-weight: bold;
         }
     }
 
@@ -502,7 +503,6 @@ $font-base-lg: 18px;
 }
 
 }
-
 
 
 

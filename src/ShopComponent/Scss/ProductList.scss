@@ -190,8 +190,8 @@ $button-font: 'Roboto Condensed', sans-serif;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-around;
-                        margin-left: 20px;
                         max-height: 550px;
+                        background-color: transparent;
                         .description{
                             display: block;
                             @media (max-width: $medium) {
@@ -229,6 +229,7 @@ $button-font: 'Roboto Condensed', sans-serif;
 .product-item{
     &:hover{
         .item-container{
+            
             .img-container{
                 .small-btn{
                     transform: scale(1);
@@ -244,7 +245,8 @@ $button-font: 'Roboto Condensed', sans-serif;
     height: 100%;
     display: flex;
     flex-direction: column;
-
+    border-radius: 10px;
+    overflow: hidden;
     .img-container{
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -277,125 +279,7 @@ $button-font: 'Roboto Condensed', sans-serif;
             &:hover{
                 opacity: 1;
                 background: rgba($color-font-sec, $alpha: 0.3);
-
-                // .btn-container{
-                //     opacity: 1;
-                //     top: 50%;
-                //     transform: translate(-50%, -50%);
-                // }
             }
-
-            // .wishlist{
-            //     padding: $padding-margin-ex-sm;
-            //     display: flex;
-            //     align-items: center;
-            //     justify-content: flex-start;
-            //     .wish-btn{
-            //         font-size: 22px;
-            //         cursor: pointer;
-            //         &:hover{
-            //             color: $color-hover;
-            //         }
-            //     }
-                
-            //     .wish-tag{
-            //         display: inline-block;
-            //         min-width: 98px;
-            //         font-size: 9px;
-            //         background: $color-font;
-            //         color: $color-bg;
-            //         padding: 2px 5px;
-            //         position: relative;
-            //         opacity: 0;
-            //         transition: $transition;
-            //         &::before{
-            //             content: '';
-            //             position: absolute;
-            //             width: 10px;
-            //             height: 10px;
-            //             background: $color-font;
-            //             left: -5px;
-            //             top: 50%;
-            //             transform: translateY(-50%) rotate(45deg);
-            //         }
-
-            //         @media (max-width: 400px) {
-            //             display: none;
-            //         }
-            //     }
-
-            //     .wish-btn:hover + .wish-tag{
-            //         opacity: 1;
-            //         margin-left: 8px;
-            //     }
-            // }
-
-            // .btn-container{
-            //     display: block;
-            //     text-align: center;
-            //     position: absolute;
-            //     top: 50%;
-            //     left: 50%;
-            //     transform: translate(-50%,-50%);
-            //     opacity: 0;
-            //     transition: $transition;
-            //     @media (max-width: $small) {
-            //         display: none;
-            //     }
-
-            //     .view-btns, .shop-btns{
-            //         width: 110px;
-            //         height: 40px;
-            //         margin: 0 auto;
-            //         border-radius: 30px;
-            //         display: flex;
-            //         flex-direction: column;
-            //         align-content: center;
-            //         justify-content: center;
-            //         position: relative;
-            //         overflow: hidden;
-            //         margin: 5px 0;
-
-            //         &:hover{
-            //             .btn-white{
-            //                 top: -110%;
-            //                 opacity: 0;
-            //                 &:hover{
-            //                     background: $color-bg;
-            //                     color: $color-font;
-            //                 }
-            //             }
-            //             .btn-black{
-            //                 top: -2px;
-            //                 left: -2px;
-            //                 opacity: 1;
-            //                 font-size: 25px;
-            //                 &:hover{
-            //                     background: $color-font;
-            //                     color: $color-bg;
-            //                 }
-            //             }
-            //         }
-
-            //         button{
-            //             position: absolute;
-            //             width: 110%;
-            //             height: 110%;
-            //         }
-
-            //         .btn-black{
-            //             top: 100%;
-            //             left: -2px;
-            //             opacity: 0;
-            //         }
-
-            //         .btn-white{
-            //             top: -2px;
-            //             left: -2px;
-            //             opacity: 1;
-            //         }
-            //     }
-            // }
         }
         .wishlist{
             position: absolute;
@@ -471,13 +355,15 @@ $button-font: 'Roboto Condensed', sans-serif;
     }
 
     .item-content{
+        background-color: rgba($color-font-sec, $alpha: 0.2);
         flex: 1;
         max-height: 150px;
         text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        padding: 20px;
+        padding-top: 0px;
         .name{
             font-size: 16px;
             font-weight: 500;

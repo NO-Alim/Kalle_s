@@ -111,7 +111,7 @@ const Trending = () => {
                                                 </div>
                                             </div>
                                             <div className="item-content">
-                                                <h5 className="name">{((item.description).replace(/^(.{50}[^\s]*).*/, "$1") + "")}...</h5>
+                                                <h5 className="name">{((item.description).replace(/^(.{20}[^\s]*).*/, "$1") + "")}...</h5>
                                                 <span className="price">${item.price}</span>
                                                 
                                                 <div className="color-container">
