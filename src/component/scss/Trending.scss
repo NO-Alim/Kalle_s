@@ -343,7 +343,7 @@ $font-base-lg: 18px;
     width: 30px;
     height: 30px;
     z-index: 10;
-    border: 2px solid $color-font;
+    //border: 2px solid $color-font;
     overflow: hidden;
     transition: $transition;
     top: 50%;
@@ -351,11 +351,10 @@ $font-base-lg: 18px;
     @media (max-width: $small) {
         opacity: 1;
         display: block;
-        background-color: $color-font;
         top: 50%;
         transform: translateY(-50%) scale(1);
         border-color: $color-hover;
-        background-color: $color-hover;
+        background-color: transparent;
 
         &::before{
             background-color: $color-hover;
@@ -364,38 +363,34 @@ $font-base-lg: 18px;
     &:hover{
         opacity: 1;
         display: block;
-        background-color: $color-font;
+        background-color: transparent;
         top: 50%;
         transform: translateY(-50%) scale(1);
-        border-color: $color-hover;
-        background-color: $color-hover;
+
 
         &::before{
-            background-color: $color-hover;
+            background-color: transparent;
+            color: $color-hover;
         }
     }
     &::before{
         position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 0;
-        left: -2px;
-        background-color: $color-font;
+        //width: 30px;
+        //height: 30px;
+        //top: 0;
+        //left: -2px;
         border-radius: 50%;
         font-size: 30px;
         transition: $transition;
+        background-color: transparent;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba($color-hover, $alpha: 0.9);
     }
-    // &::after{
-    //     content: ' \203A';
-    //     width: 100%;
-    //     height: 100%;
-    //     background-color: yellow;
-    //     left: 0;
-    //     top: 0;
-    //     position: absolute;
-    //     border-radius: 50%;
-    //     color: red;
-    // }
 }
 
 .slick-next{

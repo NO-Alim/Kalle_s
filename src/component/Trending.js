@@ -78,7 +78,7 @@ const Trending = () => {
     
     if (loading) {
         return(
-            <h1>Loading</h1>
+            <h1 className="section-container h1" style={{fontWeight: '400'}}>Loading...</h1>
         )
     }
     return (

@@ -49,7 +49,13 @@ const About = () => {
                         <Modal
                         isOpen={isModalOpen}
                         onRequestClose={toggleModal}
-                        contentLabel="My dialog" className="modal">
+                        contentLabel="My dialog" className="modal"
+                        style={{
+                            overlay: {
+                            backgroundColor: 'rgba(109, 109, 109,0.4)',
+                            zIndex: '100'
+                            }
+                        }}>
                             <div>
                                 <div className="modal-content">
                                     <span className="modal-btn" onClick={() => toggleModal()}><FaTimes /></span>

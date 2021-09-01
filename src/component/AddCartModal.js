@@ -28,7 +28,8 @@ const AddCartModal = () => {
         className="addCartModal"
         style={{
             overlay: {
-            backgroundColor: 'rgba(109, 109, 109,0.4)'
+            backgroundColor: 'rgba(109, 109, 109,0.4)',
+            zIndex: '100'
             }
         }}>
             <div className="modal-content-container">

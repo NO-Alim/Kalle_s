@@ -161,7 +161,7 @@ const ProductList = () => {
     if (loading) {
         return(
             <div className="section-container">
-                <h2>loading...</h2>
+                <h1 className="h1" style={{fontWeight: '400'}}>Loading...</h1>
             </div>
         )
     }

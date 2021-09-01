@@ -7,6 +7,8 @@ import { useRef } from 'react'
 import { useGlobalContext } from '../context'
 import { useEffect } from 'react'
 import Modal from 'react-modal';
+import zIndex from '@material-ui/core/styles/zIndex'
+
 
 Modal.setAppElement("#root");
 const CheckOut = () => {
@@ -191,7 +193,8 @@ const CheckOut = () => {
         className="addCartModal"
         style={{
             overlay: {
-            backgroundColor: 'rgba(109, 109, 109,0.4)'
+            backgroundColor: 'rgba(109, 109, 109,0.4)',
+            zIndex: '100'
             }
         }}>
             <div className="modal-container">
