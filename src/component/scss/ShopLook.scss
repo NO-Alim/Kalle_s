@@ -1,0 +1,184 @@
+$color-bg: #fff;
+$color-bg-sec: rgb(240, 240, 240);
+$color-font: #000;
+$color-font-sec: rgb(109, 109, 109);
+$color-hover: rgb(93, 217, 255);
+
+$padding-margin-ex-lg: 150px;
+$padding-margin-lg: 100px;
+$padding-margin-md: 70px;
+$padding-margin-sm: 50px;
+$padding-margin-ex-sm: 20px;
+
+$transition: all 0.3s ease-in-out;
+//query
+$large: 1100px;
+$ex-medium: 900px;
+$medium: 768px;
+$small: 550px;
+$extraSmall: 450px;
+
+$heading: 70px;
+$heading-sm: 50px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 20px;
+$font-base: 16px;
+$font-base-lg: 18px;
+
+
+.shop-look{
+    @media (max-width: $small) {
+        padding-top: 20px;
+    }
+
+    .h3{
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .img{
+        background-image: url('https://cdn.pixabay.com/photo/2015/07/02/10/18/jeans-828693_960_720.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-top: 40%;
+        position: relative;
+        @media (max-width: $medium) {
+            padding-top: 50%;
+        }
+        @media (max-width: $small) {
+            padding-top: 60%;
+        }
+
+        .pin-div{
+            position: absolute;
+            background-color: transparent;
+            &.one{
+                top: 20%;
+                left: 50%;
+            }
+            &.two{
+                top: 30%;
+                left: 30%;
+            }
+
+            &.active{
+                .selected-product-container{
+                    display: flex;
+                }
+            }
+
+            .plus{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40px;
+                height: 40px;
+                background-color: rgb(243, 137, 137);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+                cursor: pointer;
+                @media (max-width: $small) {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+            .lazy-pin{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40px;
+                height: 40px;
+                background-color: rgba($color-bg, $alpha: 0.5);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 0;
+                animation: animation1 1000ms linear infinite;
+                @media (max-width: $small) {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+            .selected-product-container{
+                position: absolute;
+                margin-top: 40px;
+                margin-left: -75px;
+                background-color: $color-bg;
+                padding: 10px;
+                display: none;
+                flex-direction: column;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    background-color: $color-bg;
+                    top: -7px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(45deg);
+                }
+                .selected-img{
+                    padding: 0;
+                    margin: 0;
+                    img{
+                        max-width: 130px;
+                    }
+                }
+
+                .small-btn{
+                    .btn-group{
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 10px 0;
+                        button{
+                            width: 30px;
+                            height: 30px;
+                            margin-right: 5px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                .name-container{
+                    h4{
+                        font-size: 17px;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes animation1{
+    0%{
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+    }
+    50%{
+        width: 50px;
+        height: 50px;
+        opacity: 1;
+    }
+
+    100%{
+        width: 40px;
+        height: 40px;
+        opacity: 0;
+    }
+    
+}
