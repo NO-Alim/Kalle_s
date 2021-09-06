@@ -157,15 +157,15 @@ const Navbar = () => {
                             </div>
                             <div className="right">
                                 <div className="drop-container">
-                                    <span className="drop-btn drop-btn-one">english<i><RiArrowDropDownLine /></i></span>
+                                    <span className="drop-btn drop-btn-one">english</span>
                                 </div>
                                 <div className="drop-container">
-                                    <span className="drop-btn drop-btn-two">USA<i><RiArrowDropDownLine /></i></span>
+                                    <span className="drop-btn drop-btn-two">USA</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <Headroom >
+                    <Headroom style={{zIndex: '1000'}}>
                     <div className="bottom-nav">
                         <div className="bottom-nav-container">
                             <div className="menu-container">

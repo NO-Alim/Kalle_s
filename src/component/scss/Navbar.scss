@@ -305,8 +305,7 @@ nav{
                 flex-direction: column;
                 margin-top: 10px;
                 li{
-                    margin: 10px 0;
-                    
+                    margin: 10px;
 
                     a{
                         display: flex;
@@ -317,6 +316,7 @@ nav{
                         padding: 10px 0;
                         width: 100%;
                         border-right: 0;
+                        border-radius: 10px;
                         &.active{
                             color: $color-bg;
                             background-color: $color-font;

@@ -227,6 +227,8 @@ $button-font: 'Roboto Condensed', sans-serif;
 //for any global style product
 //please linkup scss file with your js file
 .product-item{
+    background-color: rgba($color-font-sec, $alpha: 0.2);
+    border-radius: 10px;
     &:hover{
         .item-container{
             
@@ -355,7 +357,7 @@ $button-font: 'Roboto Condensed', sans-serif;
     }
 
     .item-content{
-        background-color: rgba($color-font-sec, $alpha: 0.2);
+        //background-color: rgba($color-font-sec, $alpha: 0.2);
         flex: 1;
         max-height: 150px;
         text-align: left;
@@ -490,8 +492,12 @@ $button-font: 'Roboto Condensed', sans-serif;
                 }
             }
             span{
-                padding: 10px 20px;
-                margin: 0 10px;
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: $color-bg-sec;
                 cursor: pointer;
             }

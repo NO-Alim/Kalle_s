@@ -6,16 +6,23 @@ import {BiShow} from 'react-icons/bi'
 import { useState } from 'react'
 import { useRef } from 'react'
 import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
 
 
 //https://cdn.pixabay.com/photo/2015/07/02/10/18/jeans-828693_960_720.jpg
 const SingleBlog = () => {
+    const {toggleAddCartModal,handleWishList} = useGlobalContext();
     const [active, setActive] = useState('');
-    const pinDivRef = useRef(null);
+    const pinDivOneRef = useRef(null);
+    const pinDivTwoRef = useRef(null);
+    const location = useHistory();
 
     const handleClick = (e) => {
-        console.log('hello');
+        if (!pinDivOneRef.current.contains(e.target) && !pinDivTwoRef.current.contains(e.target)) {
+            setActive('')
+        }
     }
 
     useEffect(() =>{
@@ -53,7 +60,7 @@ const SingleBlog = () => {
                         <h3 className="h3">Shop The Look</h3>
                     </div>
                     <div className="img">
-                        <div className={`pin-div one ${active === 'one' ? 'active' : null}`} onClick={() => setActive('one')} ref={pinDivRef}>
+                        <div className={`pin-div one ${active === 'one' ? 'active' : null}`} onClick={() => setActive('one')} ref={pinDivOneRef}>
                             <span className="plus"><FiPlus /></span>
                             <span className="lazy-pin"></span>
                             
@@ -63,9 +70,9 @@ const SingleBlog = () => {
                                 </div>
                                 <div className="small-btn">
                                     <div className="btn-group">
-                                        <button className="btn-white" ><BiShow /></button>
-                                        <button className="btn-white" ><FiShoppingCart /></button>
-                                        <button className="btn-white" ><FaRegHeart /></button>
+                                        <button className="btn-white" onClick={() => location.push(`/product/3`)}><BiShow /></button>
+                                        <button className="btn-white" onClick={() => toggleAddCartModal(3)}><FiShoppingCart /></button>
+                                        <button className="btn-white" onClick={() => handleWishList(3)}><FaRegHeart /></button>
                                     </div>
                                 </div>
                                 <div className="name-container">
@@ -76,7 +83,7 @@ const SingleBlog = () => {
 
                         </div>
 
-                        <div className={`pin-div two ${active === 'two' ? 'active' : null}`} onClick={() => setActive('two')} ref={pinDivRef}>
+                        <div className={`pin-div two ${active === 'two' ? 'active' : null}`} onClick={() => setActive('two')} ref={pinDivTwoRef}>
                             <span className="plus"><FiPlus /></span>
                             <span className="lazy-pin"></span>
 
@@ -86,9 +93,9 @@ const SingleBlog = () => {
                                 </div>
                                 <div className="small-btn">
                                     <div className="btn-group">
-                                        <button className="btn-white" ><BiShow /></button>
-                                        <button className="btn-white" ><FiShoppingCart /></button>
-                                        <button className="btn-white" ><FaRegHeart /></button>
+                                        <button className="btn-white" onClick={() => location.push(`/product/8`)}><BiShow /></button>
+                                        <button className="btn-white" onClick={() => toggleAddCartModal(8)}><FiShoppingCart /></button>
+                                        <button className="btn-white" onClick={() => handleWishList(8)}><FaRegHeart /></button>
                                     </div>
                                 </div>
                                 <div className="name-container">

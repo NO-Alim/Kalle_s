@@ -69,7 +69,7 @@ $button-font: 'Roboto Condensed', sans-serif;
             max-height: auto;
             transition: $transition;
             @media (max-width: $ex-medium) {
-                min-height: 300px;
+                min-height: 140px;
             }
         }
         ul{
